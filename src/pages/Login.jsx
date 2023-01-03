@@ -18,7 +18,7 @@ const Login = () => {
             Recordar mi contraseña
           </label>
           <div>
-            <Link to="/">
+            <Link to="/" style={{ textDecoration: "none" }}>
               <button className="logbtn">
                 <p>INICIAR SESIÓN</p>
               </button>
@@ -27,7 +27,7 @@ const Login = () => {
         </form>
 
         <p>¿No tienes una cuenta? ¡Regístrate Ahora!</p>
-        <Link to="/register">
+        <Link to="/register" style={{ textDecoration: "none" }}>
           <button>
             <p>REGISTRARME</p>
           </button>

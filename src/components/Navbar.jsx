@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import menuIcon from "../images/menuIcon.png";
 import recortado from "../images/pokemonRecortado.png";
 import busqueda from "../images/Logo Busqueda.png";
+import Searchbar from "./Searchbar";
 
 const Navbar = () => {
   return (
@@ -10,10 +11,9 @@ const Navbar = () => {
       <NavLink to="/">
         <img src={recortado} className="logo" />
       </NavLink>
-      <div className="search">
-        <input type="input" className="searchBar" maxlength="40" />
-        <img className="logo-busq" src={busqueda} />
-      </div>
+
+      <Searchbar></Searchbar>
+
       <nav className="menuHTML">
         <label for="menu-toggle">
           <div className="botonMenu">
@@ -29,7 +29,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <NavLink to="/dex">Dex</NavLink>
+            <NavLink to="/PokeDex">Dex</NavLink>
           </li>
 
           <li>

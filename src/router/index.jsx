@@ -8,6 +8,7 @@ import Wiki from "../pages/Wiki";
 import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PokeDex from "../pages/PokeDex";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/PokeDex",
+        element: <PokeDex />,
       },
     ],
   },

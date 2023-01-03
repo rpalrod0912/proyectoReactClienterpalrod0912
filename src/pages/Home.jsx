@@ -23,7 +23,7 @@ const Home = () => {
       <section className="secFinal">
         <div className="opcion1">
           <h1>PokéDex</h1>
-          <NavLink to="/dex">
+          <NavLink to="/PokeDex">
             <img className="im1" src={imSec1} />
           </NavLink>
         </div>
