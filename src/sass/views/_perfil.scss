@@ -1,0 +1,223 @@
+//Modifica a perfil.html
+
+h1 {
+  font-family: "pokemon_solidnormal";
+  font-weight: normal;
+  letter-spacing: 0.18em;
+  color: var(--color__secundario);
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 3%;
+  font-size: 2.5vw;
+}
+//prfBody estilos background
+.prfBody {
+  p {
+    color: var(--color__secundario);
+    font-family: "blogger_sansbold";
+    font-size: 2vw;
+  }
+  //Informacion basica del perfil del usuario
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    p {
+      color: var(--color__secundario);
+      width: 70%;
+    }
+  }
+  border-radius: 25px 25px 0px 0px;
+  width: 80%;
+  background-color: var(--color__form);
+  .userPrf {
+    display: flex;
+    margin-top: 4rem;
+    //Space Evenly da espacios entre elementos
+    justify-content: space-evenly;
+  }
+  .userPreset {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    //EStilos del div circulo que envuelve a la imagen
+    .circleUser {
+      background-color: $color__primario;
+      width: auto;
+      width: 10rem;
+      height: 9rem;
+      border-radius: 50%;
+      justify-content: center;
+      padding: 20px;
+      .signUp {
+        margin: auto auto 80px;
+        /* padding-left: 1rem; */
+        /* padding-right: 1rem; */
+      }
+
+      /* display: flex; */
+      margin: 0 auto;
+      /* display: block;*/
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    //Estilo de las etiquetas que tendra el usuario
+    .etiquetas {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    p {
+      display: inline-block;
+      width: 35%;
+    }
+    .exp {
+      color: WHITE;
+      /* width: 50%; */
+      /* max-width: 60%; */
+      /* height: 10vw; */
+      /* max-height: 10vw; */
+      background-color: red;
+      border: 3px solid red;
+      border-radius: 30px;
+      text-align: center;
+      font-family: blogger_sansbold;
+    }
+  }
+  //Estilos del formulario que se puede editar de los datos del perfil del usuario
+  //Seccion con formulario interno
+  .userData {
+    padding-top: 1rem;
+    background-color: var(--color__formOr);
+    margin: auto;
+    margin-top: 7%;
+    border-radius: 20px;
+    /* margin: 30px; */
+    width: 80%;
+    .userForm {
+      p {
+        color: var(--color__primario);
+      }
+      margin: auto auto;
+      text-align: center;
+      img {
+        width: 20%;
+        display: block;
+        margin: auto;
+        margin-bottom: 30px;
+      }
+      border-radius: 30px;
+      min-height: 400px;
+      margin: 2rem 2rem;
+      width: auto;
+      div {
+        //Para centrar el div
+        gap: 20px;
+        border-radius: 20px;
+        grid-template-columns: 1fr 3fr;
+        place-items: flex-end;
+        /* margin: 0 auto; */
+        /* margin: 30px auto; */
+        padding: 2rem;
+        display: grid;
+        justify-items: start;
+        justify-content: center;
+      }
+      button {
+        background-color: var(--color__boton);
+        border: 10px solid var(--color__boton);
+        margin: auto auto 5%;
+        font-size: 1.5vw;
+      }
+    }
+
+    label {
+      color: white;
+      font-family: "blogger_sansbold";
+      font-size: 1.5vw;
+      display: flex;
+      width: 16rem;
+      grid-column: 1/2;
+      font-weight: bold;
+    }
+    input {
+      font: 1.5vw solid white;
+      background-color: #2d2a2a;
+      border-radius: 18px;
+      color: white;
+      height: 80%;
+    }
+  }
+}
+@media (min-width: 631px) and (max-width: 880px) {
+  .prfBody {
+    .userData {
+      label {
+        width: 7rem;
+      }
+    }
+  }
+}
+@media (max-width: 630px) {
+  h1 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .prfBody {
+    p {
+      font-size: 0.9rem;
+      width: 100px;
+    }
+    .info {
+      text-align: center;
+      p {
+        width: auto;
+      }
+    }
+    .userPrf {
+      flex-direction: column;
+      align-items: center;
+    }
+    .userPreset {
+      .etiquetas {
+        flex-direction: column;
+      }
+    }
+    .userData {
+      p {
+        font-size: 1.3rem;
+      }
+      input {
+        width: 12rem;
+        font-size: 1.3rem;
+      }
+      .userForm {
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+        button {
+          font-size: 1.1rem;
+        }
+      }
+      label {
+        width: auto;
+
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

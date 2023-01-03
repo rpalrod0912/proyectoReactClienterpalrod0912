@@ -1,0 +1,155 @@
+//Header que se utilizará ent doa la página, es un display flex con direccion en filas compuesto por un logo una barra de busqueda y un menu hamburguesa
+header {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-height: 40vh;
+  height: auto;
+  a {
+    width: 20%;
+  }
+  //Estilos del logo
+  .logo {
+    width: 40%;
+    padding: 10px;
+    padding-left: 30px;
+  }
+  //Estilos de barra de busqueda
+
+  .search {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .searchBar {
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: black;
+  }
+  .logo-busq {
+    width: 40px;
+    height: 45px;
+    padding: 10px;
+  }
+  nav {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    padding: 10px;
+    width: 45%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+
+  // MENU COPIADO DE INTERNET
+  .botonMenu {
+    margin: 0 auto;
+
+    display: block;
+
+    width: 40px;
+
+    height: 36px;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    //background: #666;
+
+    color: white;
+
+    cursor: pointer;
+
+    position: relative;
+  }
+
+  .botonMenu {
+    .imgMenu {
+      display: block;
+
+      width: 40px;
+
+      /*height: 4px;
+  
+        background: white;
+  
+        margin-top: 7px;*/
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  #trickMenu {
+    display: none;
+    border-radius: 0px 0px 20px 20px;
+    text-align: center;
+
+    background: white;
+
+    padding: 10px 0;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: 75px;
+    width: 300px;
+    list-style: none;
+  }
+
+  #trickMenu li a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    width: auto;
+    color: black;
+    text-decoration: none;
+  }
+  #trickMenu li a:hover {
+    transition: 0.7s;
+    width: auto;
+    background-color: black;
+    color: white;
+  }
+
+  #menu-toggle:checked + #trickMenu {
+    text-align: center;
+    display: block;
+  }
+}
+
+@media (max-width: 620px) {
+  header {
+    .logo {
+      width: 120px;
+    }
+    .search {
+      visibility: hidden;
+    }
+    #trickMenu {
+      display: none;
+
+      text-align: center;
+
+      padding: 10px 0;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+      top: 75px;
+      width: 130px;
+      list-style: none;
+    }
+  }
+}

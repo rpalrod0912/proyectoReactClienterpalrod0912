@@ -1,0 +1,295 @@
+//Modifica a vistaPkm.html
+
+.typeElectric {
+  color: black;
+  /* width: 50%; */
+  /* max-width: 60%; */
+  /* height: 10vw; */
+  /* max-height: 10vw; */
+  background-color: yellow;
+  border: 3px solid yellow;
+  border-radius: 30px;
+  text-align: center;
+  font-family: blogger_sansbold;
+  font-size: 2vw;
+}
+//Estilos del body
+.bdy {
+  padding-top: 5%;
+  background-color: var(--color__backgroundLogin);
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+//Estilos de la seccion
+.dexBdy {
+  .p1 {
+    color: var(--color__secundario);
+  }
+  p {
+    font-family: "blogger_sansbold";
+    font-size: 2vw;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    p {
+      width: 70%;
+    }
+  }
+  border-radius: 25px 25px 0px 0px;
+  width: 80%;
+  background-color: var(--color__bckDex);
+  //Nunca Poner height en las section principales, siempre min height o el documento no extendera
+
+  .pkmDex {
+    display: flex;
+    margin-top: 4rem;
+    //Space Evenly da espacios entre elementos
+    justify-content: space-evenly;
+  }
+  //Estilos de los primeros datos que se ven en la parte superior del pokemon
+  .pkmPreset {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .circle {
+      width: auto;
+      width: 10rem;
+      height: 9rem;
+      background-color: var(--color__circleDex);
+      border-radius: 50%;
+      justify-content: center;
+      padding: 20px;
+      /* display: flex; */
+      margin: 0 auto;
+      /* display: block;*/
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    //Estilos de las etiquetas del tipo de pokemon
+    .types {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    p {
+      display: inline-block;
+      width: 35%;
+    }
+    .typeGround {
+      color: black;
+      /* width: 50%; */
+      /* max-width: 60%; */
+      /* height: 10vw; */
+      /* max-height: 10vw; */
+      background-color: #ceb24d;
+      border: 3px solid #ceb24d;
+      border-radius: 30px;
+      text-align: center;
+      font-family: blogger_sansbold;
+    }
+  }
+  @media (max-width: 700px) {
+  }
+
+  h1 {
+    font-family: "pokemon_solidnormal";
+    font-weight: normal;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3%;
+    font-size: 2.5vw;
+  }
+  /*.circle{
+        display: flex;
+        background-color: #4E4E4E;
+        border-radius: 50%;
+        padding: 20px;
+        justify-content: center
+    }*/
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: baseline;
+    justify-content: space-evenly;
+
+    p {
+      padding-top: 2rem;
+      font-size: 2vw;
+      color: black;
+      font-family: "blogger_sansbold";
+    }
+    .izq {
+      width: 2vw;
+      transform: rotate(-180deg);
+    }
+    .der {
+      width: 2vw;
+    }
+  }
+  //EStilosdel segundo contenedor que contiene las caracteristicas del pokemon
+  .stats {
+    display: flex;
+    background-color: var(--color__pkmStats);
+    border-radius: 20px solid;
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 20px solid var(--color__pkmStats);
+    border-radius: 20px;
+    justify-content: center;
+    p {
+      color: white;
+      min-width: 24rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      .pkData {
+        color: black;
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    .stats {
+      p {
+        min-width: auto;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .evoTitle {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 3vw;
+    font-weight: bold;
+    color: black;
+    font-family: "blogger_sansbold";
+  }
+  @media (max-width: 700px) {
+    .dexBdy {
+      font-size: 1.6rem;
+      .evoTitle {
+        h2 {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+  //Estilos del div que contiene las evolucines
+  .evo {
+    display: flex;
+    background-color: #4e4e4e;
+    border-radius: 20px solid;
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 20px solid #4e4e4e;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    .flecha {
+      width: 2vw;
+      transform: rotate(180deg);
+    }
+    .filaEvo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .typeElectric {
+        padding: 0px 13px;
+      }
+      .circle {
+        width: auto;
+        width: 10rem;
+        height: 9rem;
+        background-color: #424040;
+        border: 9px solid white;
+        border-radius: 50%;
+        justify-content: center;
+        padding: 20px;
+        /* display: flex; */
+        margin: 0 auto;
+        /* display: block;*/
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 700px) {
+  .dexBdy {
+    .nav {
+      p {
+        font-size: 6vw;
+      }
+      .izq,
+      .der {
+        width: 6vw;
+      }
+    }
+    p,
+    h1 {
+      font-size: 4vw;
+    }
+    .info {
+      h1 {
+        padding-top: 20px;
+      }
+      p {
+        width: 180%;
+      }
+    }
+    .pkmPreset {
+      flex-direction: column;
+    }
+
+    .pkmDex {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 4rem;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .evoTitle {
+      font-size: 1.8rem;
+    }
+    .evo {
+      width: 60%;
+      p {
+        font-size: 5vw;
+      }
+      justify-content: center;
+      flex-direction: column;
+      flex-flow: wrap;
+      .flecha {
+        padding: 1.5rem;
+        width: 4vw;
+        transform: rotate(270deg);
+      }
+    }
+  }
+}

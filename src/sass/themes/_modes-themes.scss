@@ -1,0 +1,66 @@
+$color__primario: white;
+$color__secundario: black;
+$color__texto: black;
+$color__texto2: white;
+$color__fondo: #8aaae5;
+$color__boton: #1fa61c;
+$color__form: white;
+$color__formOr: #2d2a2a;
+$color__secIndex: #8aaae5;
+$color_backgroundIndex: white;
+$color__backgroundLogin: #8aaae5;
+$color_pkmnStats: #30a7d7;
+//Colores oscuros
+$dark__primario: black;
+$dark__secundario: white;
+$dark__texto: white;
+$dark__texto2: black;
+$dark__fondo: #092966;
+$dark__boton: #11600f;
+$dark__form: #2d2a2a;
+$dark__formOr: #504f4f;
+$dark__secIndex: black;
+$dark_backgroundIndex: #626161;
+$dark_registerForm: grey;
+$color__filtroDex: #4e4e4e;
+$color__backgroundBusq: #626060;
+$dark__pkmnStats: #0a526f;
+
+.theme {
+  --color__primario: #{$color__primario};
+  --color__secundario: #{$color__secundario};
+  --color__texto: #{$color__texto};
+  --color__texto2: #{$color__texto2};
+  --color__fondo: #{$color__fondo};
+  --color__boton: #{$color__boton};
+  --color__form: #{$color__form};
+  --color__formOr: #{$color__formOr};
+  --color__secIndex: #{$color__secIndex};
+  --color__backIndex: #{$color_backgroundIndex};
+  --color__backgroundLogin: #{$color__secIndex};
+  --color__formLogin: #{$color__primario};
+  --color__formRegister: #{$color__primario};
+  --color__filtrosDex: #{$color__filtroDex};
+  --color__bckDex: #{$color__primario};
+  --color__circleDex: #{$color__filtroDex};
+  --color__pkmStats: #{$color_pkmnStats};
+  &--dark {
+    --color__primario: #{$dark__primario};
+    --color__secundario: #{$dark__secundario};
+    --color__texto: #{$dark__texto};
+    --color__texto2: #{$dark__texto2};
+    --color__fondo: #{$dark__fondo};
+    --color__boton: #{$dark__boton};
+    --color__form: #{$dark__form};
+    --color__formOr: #{$dark__formOr};
+    --color__secIndex: #{$dark__secIndex};
+    --color__backIndex: #{$dark_backgroundIndex};
+    --color__backgroundLogin: #{$dark__form};
+    --color__formLogin: #{$dark_backgroundIndex};
+    --color__formRegister: #{$dark_registerForm};
+    --color__filtrosDex: #{$dark__primario};
+    --color__bckDex: #{$color__backgroundBusq};
+    --color__circleDex: #{$dark_registerForm};
+    --color__pkmStats: #{$dark__pkmnStats};
+  }
+}

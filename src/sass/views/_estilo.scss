@@ -1,0 +1,105 @@
+//WebKit obtenida en pagina https://www.fontsquirrel.com/tools/webfont-generator para generar fuente de Pokemon
+
+//Modifica a Index.html
+//Estilos del Index, se dividen en tres Secciones, cada una con su estilo individual
+.secInicio {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  .imInicio {
+    //Especificar Resolución Monitor?
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  h1 {
+    color: black;
+    position: absolute;
+    width: 40%;
+    height: 90px;
+    left: 79px;
+    top: 50%;
+    font-family: "pokemon_solidnormal";
+    font-size: 2.5vw;
+    letter-spacing: 0.18em;
+  }
+}
+@media (max-width: 620px) {
+  .secInicio {
+    h1 {
+      width: 60%;
+      font-size: 6vw;
+      left: 30px;
+      top: 60px;
+    }
+  }
+}
+//EStilo secccion media
+.secMed {
+  display: flex;
+  background-color: var(--color__secIndex);
+  width: 100%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  .titulo-secF {
+    //white-space: pre;
+    margin: auto;
+    width: 80%;
+    font-family: "pokemon_solidnormal";
+    letter-spacing: 0.18em;
+    font-size: 35px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+  }
+}
+
+@media (max-width: 620px) {
+  .secMed {
+    .titulo-secF {
+      font-size: 6.5vw;
+    }
+  }
+}
+
+//Estilo sección final
+.secFinal {
+  background-color: var(--color__backIndex);
+  display: flex;
+  flex-flow: row wrap;
+  align-items: space-around;
+  justify-content: space-around;
+  justify-items: center;
+  align-content: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+
+  h1 {
+    color: var(--color_texto);
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 15%;
+    font-family: "blogger_sansbold";
+  }
+  .div {
+    width: 15%;
+  }
+  img {
+    max-width: 300px;
+  }
+}
+@media (max-width: 720px) {
+  .secFinal {
+    display: flex;
+    flex-direction: column;
+    img {
+      max-width: 230px;
+    }
+    h1 {
+      margin: 40px;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+//Modifica pokedex.html
+//Estilo principal de la pagina de resultados de busqueda
+//cLASE PKdEX es clase padre donde se encuentra la clase hija resultados y filtros
+.pkDex {
+  background-color: var(--color__backgroundLogin);
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    font-family: "pokemon_solidnormal";
+    font-weight: normal;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3%;
+    font-size: 2.5vw;
+  }
+  .resultados {
+    border-radius: 25px 25px 0px 0px;
+    height: auto;
+    width: 80%;
+    background-color: var(--color__bckDex);
+
+    //Div slider filtro
+    .filtro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 25px 25px 0px 0px;
+      p {
+        padding-top: 2rem;
+        font-size: 2vw;
+        color: white;
+        font-family: "blogger_sansbold";
+      }
+      img {
+        width: 2vw;
+        transform: rotate(-90deg);
+      }
+      background-color: var(--color__filtrosDex);
+    }
+    //Estilos de cada card, pues la vista de los pokemon se ven como una card individual que se ajustaran a la pantalla con el wrap
+    //Resto del contenedor resultados
+    .cardsDex {
+      justify-content: center;
+      display: flex;
+      justify-content: space-around;
+      //Si el elemtno no cabe en la pantalla se coloca abajo
+      flex-wrap: wrap;
+      //gap:1rem;
+    }
+    .cardPkm {
+      padding-top: 3vh;
+      display: flex;
+      flex-wrap: wrap;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      font-family: "blogger_sansbold";
+      font-size: 1.3rem;
+      color: var(--color__secundario);
+      margin: 3%;
+      //Para ver lo que ocupa el elemto card
+      //background-color: tomato;
+
+      //flex:1 0 30%;
+      .circle {
+        display: flex;
+        width: 10rem;
+        background-color: var(--color__circleDex);
+        border-radius: 50%;
+        padding: 20px;
+        justify-content: center;
+      }
+      .dex1 {
+        max-width: 100%;
+        width: auto;
+        height: 9rem;
+        //Delimitamos que solo se muestren 3 elementos
+      }
+      padding-bottom: 4%;
+      button {
+        font-size: 1vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 730px) {
+  .pkDex {
+    h1 {
+      padding-top: 2rem;
+      font-size: 5.9vw;
+    }
+    .resultados {
+      .filtro {
+        p {
+          padding-top: 1rem;
+          font-size: 6vw;
+        }
+        img {
+          width: 5.5vw;
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}

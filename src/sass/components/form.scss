@@ -1,0 +1,121 @@
+//Componente Formulario
+
+main {
+  width: 100%;
+  min-height: 80vh;
+}
+
+section {
+  width: 100%;
+  min-height: 78vh;
+
+  //Si no hay display Flex se puede usar un margin:0 auto
+  background-color: #8aaae5;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10%;
+  h1 {
+    font-family: "pokemon_solidnormal";
+    font-weight: normal;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3%;
+    font-size: 280%;
+  }
+  button {
+    display: flex;
+    margin-top: 3rem;
+  }
+
+  form {
+    //Para cambiar el color del input clase checkbox
+    input[type="checkbox"] {
+      accent-color: #2d2a2a;
+    }
+    //Si no hay display Flex se puede usar un margin:0 auto
+    img {
+      width: 20%;
+      display: block;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+    background-color: white;
+    border-radius: 30px;
+    min-height: 400px;
+    margin: 2rem 2rem;
+    width: 80%;
+    div {
+      //Para centrar el div
+      margin: auto;
+      margin-bottom: 30px;
+      margin-top: 30px;
+      width: 60%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 20px;
+      padding: 2rem 2rem;
+      justify-items: center;
+      align-items: center;
+      background-color: #f5f5f5;
+      border-radius: 20px;
+      border: 1px solid black;
+    }
+  }
+  .correo {
+    margin: auto;
+    margin-bottom: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 80%;
+    padding-left: 8vw;
+    input {
+      width: 10%;
+      /* min-height: 1rem; */
+      height: auto;
+      min-height: 2vw;
+      /* max-height: 2vw;*/
+    }
+  }
+
+  .condiciones {
+    margin: auto;
+    margin-bottom: 4vw;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 80%;
+    padding-left: 8vw;
+    input {
+      width: 10%;
+      /* min-height: 1rem; */
+      height: auto;
+      min-height: 2vw;
+    }
+  }
+  label {
+    font-size: 2vw;
+    display: flex;
+    grid-column: 1/2;
+  }
+  input {
+    font: 2vw solid white;
+    background-color: #2d2a2a;
+    border-radius: 18px;
+    color: white;
+    height: 80%;
+    width: 100%;
+  }
+
+  .signUp {
+    margin: auto auto 80px;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+  }
+
+  input,
+  button {
+    grid-column: 2/2;
+  }
+}

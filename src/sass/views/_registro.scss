@@ -1,0 +1,161 @@
+//Modifica a registro.html
+//Estilos de un section que contiene formulario e inputs
+
+.register {
+  width: 100%;
+  min-height: 78vh;
+
+  //Si no hay display Flex se puede usar un margin:0 auto
+  background-color: var(--color__backgroundLogin);
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10%;
+  h1 {
+    font-family: "pokemon_solidnormal";
+    font-weight: normal;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3%;
+    font-size: 2.5vw;
+  }
+  button {
+    display: flex;
+    margin-top: 3rem;
+  }
+  //Declaramos estilos formularios y de sus inputs de text y de checkbox
+  form {
+    //Para cambiar el color del input clase checkbox
+    input[type="checkbox"] {
+      accent-color: #2d2a2a;
+    }
+    //Si no hay display Flex se puede usar un margin:0 auto
+    img {
+      width: 20%;
+      display: block;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+    background-color: var(--color__formLogin);
+    border-radius: 30px;
+    min-height: 400px;
+    margin: 2rem 2rem;
+    width: 80%;
+    div {
+      //Para centrar el div
+      margin: auto;
+      margin-bottom: 30px;
+      margin-top: 30px;
+      width: 60%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 20px;
+      padding: 2rem 2rem;
+      justify-items: center;
+      align-items: center;
+      background-color: var(--color__formRegister);
+      border-radius: 20px;
+      border: 1px solid var(--color__secundario);
+    }
+  }
+  //Input checkbox
+  .correo {
+    margin: auto;
+    margin-bottom: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 80%;
+    padding-left: 8vw;
+    input {
+      width: 12%;
+      /* min-height: 1rem; */
+      min-height: 2vw;
+      /* max-height: 2vw;*/
+    }
+  }
+  //Input condiciones
+  .condiciones {
+    margin: auto;
+    margin-bottom: 4vw;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 80%;
+    padding-left: 8vw;
+    input {
+      width: 12%;
+      /* min-height: 1rem; */
+
+      min-height: 2vw;
+    }
+  }
+  label {
+    font-size: 2vw;
+    display: flex;
+    grid-column: 1/2;
+    color: var(--color__texto);
+  }
+  input {
+    font: 2vw solid white;
+    background-color: #2d2a2a;
+    border-radius: 18px;
+    color: white;
+    height: 80%;
+    width: 100%;
+  }
+  //Estilos al boton de registro
+  .signUp {
+    margin: auto auto 80px;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+  }
+  input,
+  button {
+    grid-column: 2/2;
+  }
+}
+
+@media (max-width: 600px) {
+  .register {
+    input {
+      height: auto;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0rem;
+    }
+
+    form {
+      .contenedor {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        label {
+          font-size: 1.6rem;
+          font-family: "blogger_sansbold";
+        }
+        input {
+          height: 1.8rem;
+          font-size: 1.4rem;
+        }
+      }
+      .correo,
+      .condiciones {
+        font-size: 1.3rem;
+        width: 80%;
+        input {
+          height: 2rem;
+          width: 1.5rem;
+        }
+      }
+      button {
+        font-size: 1.3rem;
+      }
+      img {
+        width: 12rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,246 @@
+//Modifica a region.html
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+//Basamos los estilos en 3 secciones principales, op1, op2 y op3
+.Dex {
+  background-color: var(--color__primario);
+}
+//op1 contiene estilos imagen, de letra y de boton
+.op1 {
+  color: white;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  position: relative;
+
+  .im1 {
+    //Especificar Resolución Monitor?
+    max-width: 500px;
+    width: 30%;
+    bottom: 0;
+    position: absolute;
+    right: 20%;
+  }
+  .cont1 {
+    h1 {
+      height: 90px;
+      left: 79px;
+
+      font-family: "pokemon_solidnormal";
+      font-size: 2vw;
+      letter-spacing: 0.18em;
+    }
+    p {
+      font-family: "blogger_sansbold";
+      font-weight: bold;
+      font-size: 220%;
+      left: 79px;
+    }
+  }
+  button {
+    font-size: 1.5vw;
+    position: relative;
+    top: 20rem;
+    left: 18rem;
+    color: black;
+    background-color: white;
+    border: 10px solid white;
+  }
+  p,
+  h1 {
+    position: relative;
+    padding-left: 10%;
+    top: 15rem;
+    font-size: 2vw;
+    width: 70%;
+  }
+}
+//Estilos segunda seccion, con una imagen disinta y estilos de boton distintos a op1
+.op2 {
+  background-color: var(--color__primario);
+  width: 100%;
+  height: 110vh;
+  img {
+    width: 30rem;
+    max-width: 40%;
+    position: absolute;
+    top: 150%;
+    left: 15%;
+  }
+  h1 {
+    color: var(--color__texto);
+    width: 30%;
+    height: 90px;
+    left: 79px;
+
+    font-family: "pokemon_solidnormal";
+    font-size: 2vw;
+    letter-spacing: 0.18em;
+  }
+  p {
+    color: var(--color__texto);
+    font-family: "blogger_sansbold";
+    font-weight: bold;
+    font-size: 220%;
+    left: 79px;
+  }
+  button {
+    font-size: 1.5vw;
+    position: relative;
+    top: 20rem;
+    left: 60rem;
+    color: var(--color__primario);
+    background-color: var(--color__secundario);
+    border: 10px solid var(--color__secundario);
+    left: 70%;
+  }
+  p,
+  h1 {
+    position: relative;
+    padding-left: 60%;
+    top: 15rem;
+    width: 30%;
+  }
+}
+//Estilos tercera seccion, vista de Pokedex utilizando los estilos de cards con flex ya usados en los estilos de busqueda
+.op3 {
+  background-color: var(--color__backgroundLogin);
+  width: 100%;
+  //height: 100vh;
+  p {
+    margin-bottom: 7rem;
+  }
+  h2,
+  p {
+    color: var(--color__secundario);
+    padding-top: 1em;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: "blogger_sansbold";
+    font-weight: bold;
+  }
+
+  .cards {
+    justify-content: center;
+    display: flex;
+    //Si el elemtno no cabe en la pantalla se coloca abajo
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+  .card {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    //Para ver lo que ocupa el elemto card
+    //background-color: tomato;
+    width: 15rem;
+    img {
+      max-width: 100%;
+      width: 14rem;
+      height: 11rem;
+    }
+    padding-bottom: 10%;
+    button {
+      font-size: 1vw;
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .Dex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .op1 {
+      .im1 {
+        width: 63%;
+        right: 14%;
+      }
+      button {
+        display: flex;
+        margin: auto;
+        top: auto;
+        bottom: 9rem;
+        left: auto;
+        font-size: 1.6rem;
+      }
+      .cont1 {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          height: auto;
+          font-size: 1.7rem;
+          left: auto;
+          padding-top: 5rem;
+        }
+        p {
+          padding-top: 3rem;
+          text-align: center;
+        }
+        p,
+        h1 {
+          width: auto;
+          position: unset;
+          padding-left: 0%;
+          top: auto;
+          font-size: auto;
+        }
+      }
+    }
+
+    .op2 {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        width: auto;
+        top: auto;
+        font-size: 1.7rem;
+        padding-top: 4rem;
+      }
+      p {
+        top: auto;
+        left: auto;
+        text-align: center;
+      }
+      p,
+      h1 {
+        width: auto;
+        padding-left: 0%;
+        position: unset;
+        top: auto;
+        margin: 4px;
+      }
+      button {
+        display: flex;
+        margin: auto;
+        top: auto;
+        bottom: 9rem;
+        left: auto;
+        font-size: 1.6rem;
+      }
+      img {
+        display: flex;
+        top: auto;
+        bottom: -937px;
+        margin: auto;
+        max-width: none;
+        width: 20rem;
+      }
+    }
+
+    .op3 {
+      .card {
+        button {
+          font-size: 5vw;
+        }
+      }
+    }
+  }
+}

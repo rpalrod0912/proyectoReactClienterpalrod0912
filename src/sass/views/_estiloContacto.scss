@@ -1,0 +1,139 @@
+//Modifica a contacto.html
+
+//Estilo aplicado a toda la seccion del main, despues del body
+main {
+  width: 100%;
+  min-height: 80vh;
+}
+//Estilo sección contacto
+.contact {
+  width: 100%;
+  min-height: 78vh;
+
+  //Si no hay display Flex se puede usar un margin:0 auto
+  background-color: var(--color__backgroundLogin);
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10%;
+  h1 {
+    font-family: "pokemon_solidnormal";
+    font-weight: normal;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3%;
+    font-size: 280%;
+  }
+  button {
+    display: flex;
+    margin-top: 3rem;
+  }
+  //EStilos del formulario interno, usando grid
+  form {
+    img {
+      width: 20%;
+      display: block;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+    background-color: var(--color__formRegister);
+    border-radius: 30px;
+    min-height: 400px;
+    margin: 2rem 2rem;
+    width: 70%;
+    div {
+      //Para centrar el div
+      margin: auto;
+      margin-bottom: 30px;
+      margin-top: 30px;
+      width: 60%;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-gap: 20px;
+      padding: 2rem 2rem;
+      justify-items: center;
+      align-items: center;
+      place-items: flex-end;
+      border-radius: 20px;
+    }
+    button {
+      font-size: 1.5vw;
+      margin: auto;
+      background-color: black;
+      border: 10px solid black;
+      margin-bottom: 5%;
+    }
+  }
+
+  label {
+    color: var(--color__secundario);
+    font-family: "blogger_sansbold";
+    font-size: 1.5vw;
+    display: flex;
+    grid-column: 1/2;
+    font-weight: bold;
+  }
+  input {
+    font: 1.5vw solid white;
+    background-color: #2d2a2a;
+    border-radius: 18px;
+    color: white;
+    height: 80%;
+    width: 100%;
+  }
+  textarea {
+    font-size: 1.1rem;
+    display: flex;
+    width: 50%;
+    max-height: 30vw;
+    margin: auto;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    margin-bottom: 1%;
+  }
+  //Margenes al boton de registro
+  .signUp {
+    margin: auto auto 80px;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+  }
+
+  input,
+  button {
+    grid-column: 2/2;
+  }
+}
+@media (max-width: 700px) {
+  .contact {
+    form {
+      width: 89%;
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        label {
+          font-size: 1.7rem;
+        }
+        input {
+          height: 1.9rem;
+          font-size: 1.6rem;
+        }
+      }
+      textarea {
+        width: 90%;
+        max-height: 25rem;
+        margin: 0 auto 1rem;
+        font-size: 1.3rem;
+        padding-bottom: 1rem;
+      }
+      button {
+        font-size: 1.6rem;
+      }
+    }
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
