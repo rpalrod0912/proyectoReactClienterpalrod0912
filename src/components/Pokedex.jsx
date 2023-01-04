@@ -1,9 +1,19 @@
 import React from "react";
+import Paginacion from "./Paginacion";
 
 import Pokemon from "./Pokemon";
 
 const Pokedex = (props) => {
-  const { pokemons } = props;
+  const { pokemons, page, setPage, total, carga } = props;
+  const lastPage = () => {
+    const nextPage = Math.max(page - 1, 0);
+    setPage(nextPage);
+  };
+
+  const nextPage = () => {
+    const nextPage = Math.min(page + 1, total);
+    setPage(nextPage);
+  };
   //console.log(props);
 
   /*const lastPage = () => {
@@ -25,12 +35,15 @@ const Pokedex = (props) => {
             <p>Mostrar Filtros</p>
             <img src="assets/images/Flecha.png" />
           </div>
-          <div class="cardsDex">
-            {pokemons.map((pokemon, idx) => {
-              return (
-                <Pokemon pokemon={pokemon} key={pokemon.name} />
-                //A la hora de hacer listados usamos key cmo identificadores del componente
-                /*<div class="cardPkm" key={pokemon.name}>
+          {carga ? (
+            <div>Cargando Pokemons..</div>
+          ) : (
+            <div class="cardsDex">
+              {pokemons.map((pokemon, idx) => {
+                return (
+                  <Pokemon pokemon={pokemon} key={pokemon.name} />
+                  //A la hora de hacer listados usamos key cmo identificadores del componente
+                  /*<div class="cardPkm" key={pokemon.name}>
                   <div class="circle">
                     <a>
                       <img
@@ -42,10 +55,17 @@ const Pokedex = (props) => {
                   <p>Nº {idx + 1}</p>
                   <h3>{pokemon.name}</h3>
                 </div>*/
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
+        <Paginacion
+          page={page + 1}
+          totalPages={total}
+          onLeftClick={lastPage}
+          onRightClick={nextPage}
+        />
       </section>
     </div>
   );

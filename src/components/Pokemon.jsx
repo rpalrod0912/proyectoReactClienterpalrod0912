@@ -3,8 +3,9 @@ import React from "react";
 // Componente puro , solo muestra info
 const Pokemon = (props) => {
   const { pokemon } = props;
-  console.log(pokemon);
-
+  //console.log(pokemon);
+  const redHeart = "❤️";
+  const blackHeart = "🖤";
   return (
     <div class="cardPkm">
       <div class="circle">
@@ -18,6 +19,7 @@ const Pokemon = (props) => {
       </div>
       <p> Nº {pokemon.id}</p>
       <h3>{pokemon.name}</h3>
+      <p>🖤</p>
     </div>
   );
 };

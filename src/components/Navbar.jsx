@@ -13,7 +13,7 @@ const Navbar = () => {
       </NavLink>
 
       <Searchbar></Searchbar>
-
+      <div>Favoritos:{100}</div>
       <nav className="menuHTML">
         <label for="menu-toggle">
           <div className="botonMenu">
