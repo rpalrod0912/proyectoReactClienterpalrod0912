@@ -9,6 +9,8 @@ import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PokeDex from "../pages/PokeDex";
+import KantoDex from "../pages/KantoDex";
+import JohtoDex from "../pages/JohtoDex";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
       {
         path: "/PokeDex",
         element: <PokeDex />,
+      },
+      {
+        path: "/Kanto",
+        element: <KantoDex />,
+      },
+      {
+        path: "/Johto",
+        element: <JohtoDex />,
       },
     ],
   },

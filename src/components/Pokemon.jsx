@@ -23,7 +23,7 @@ const Pokemon = (props) => {
         <a>
           <img
             class="dex1"
-            src={pokemon.sprites.front_default}
+            src={pokemon.sprites.other.dream_world.front_default}
             alt={pokemon.name}
           />
         </a>

@@ -6,7 +6,7 @@ import Pokemon from "./Pokemon";
 
 const { useContext } = React;
 
-const Pokedex = (props) => {
+const Jhotodex = (props) => {
   const { likedPokemons } = useContext(LikeContext);
   //debugger;
   console.log(likedPokemons);
@@ -93,4 +93,4 @@ const Pokedex = (props) => {
   );
 };
 
-export default Pokedex;
+export default Jhotodex;

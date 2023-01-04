@@ -11,6 +11,8 @@ export const getPokemons = async (limit = 1154, offset = 0) => {
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const response = await fetch(url);
     const data = await response.json();
+    //debugger;
+    //console.log(data);
     return data;
   } catch (err) {}
 };

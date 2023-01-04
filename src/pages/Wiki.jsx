@@ -30,7 +30,9 @@ const Wiki = () => {
         </a>
         <h1>PÓKEDEX ORIGINAL</h1>
         <p>Encuentra Información de los pokémon de la región original</p>
-        <button>ACCEDER</button>
+        <Link to="/Kanto" style={{ textDecoration: "none" }}>
+          <button>ACCEDER</button>
+        </Link>
       </section>
       <section class="op3">
         <h2>REGIONES DISPONIBLES</h2>
@@ -44,13 +46,17 @@ const Wiki = () => {
             <a>
               <img class="dex1" src={dex1} />
             </a>
-            <button>KANTO</button>
+            <Link to="/Kanto" style={{ textDecoration: "none" }}>
+              <button>KANTO</button>
+            </Link>
           </div>
           <div class="card">
             <a>
               <img class="dex1" src={dex2} />
             </a>
-            <button>JOHTO</button>
+            <Link to="/Johto" style={{ textDecoration: "none" }}>
+              <button>JOHTO</button>
+            </Link>
           </div>
           <div class="card">
             <a>

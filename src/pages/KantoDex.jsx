@@ -13,7 +13,7 @@ const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
 
-const PokeDex = () => {
+const KantoDex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
@@ -25,16 +25,15 @@ const PokeDex = () => {
   const fetchPokemons = async () => {
     try {
       setCarga(true);
-      const data = await getPokemons(25, 25 * page);
-      debugger;
-      console.log(data);
+      const data = await getPokemons(11, 10 * page);
+      //console.log(data.results);
       const arrPromesas = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(data.count / 25));
+      setTotal(Math.ceil(data.count / 86));
       setNoExiste(false);
       console.log(results);
     } catch (err) {}
@@ -48,6 +47,7 @@ const PokeDex = () => {
   };
 
   useEffect(() => {
+    console.log("Pokemons fav.....");
     cargaLikedPokemons();
   }, []);
 
@@ -117,4 +117,4 @@ const PokeDex = () => {
   );
 };
 
-export default PokeDex;
+export default KantoDex;
