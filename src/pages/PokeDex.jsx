@@ -3,14 +3,17 @@ import { Link, NavLink } from "react-router-dom";
 import { getPokemonData, getPokemons } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
+import { LikeProvider } from "../contexts/likeContext";
 
 const { useState, useEffect } = React;
 
 const PokeDex = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
   const [carga, setCarga] = useState(true);
+  const [like, setLike] = useState([]);
+
   const fetchPokemons = async () => {
     try {
       setCarga(true);
@@ -30,20 +33,36 @@ const PokeDex = () => {
   useEffect(() => {
     fetchPokemons();
   }, [page]);
+
+  const updateLikedPokemons = (name) => {
+    //console.log(name);
+    const actualizado = [...like];
+    const isLiked = like.indexOf(name);
+    if (isLiked >= 0) {
+      actualizado.splice(isLiked, 1);
+    } else {
+      actualizado.push(name);
+    }
+    setLike(actualizado);
+  };
   return (
-    <main>
-      {carga ? (
-        <div>Cargando Pokemons...</div>
-      ) : (
-        <Pokedex
-          carga={carga}
-          pokemons={pokemons}
-          page={page}
-          setPage={setPage}
-          total={total}
-        />
-      )}
-    </main>
+    <LikeProvider
+      value={{ likedPokemons: like, updateLikedPokemons: updateLikedPokemons }}
+    >
+      <main>
+        {carga ? (
+          <div>Cargando Pokemons...</div>
+        ) : (
+          <Pokedex
+            carga={carga}
+            pokemons={pokemons}
+            page={page}
+            setPage={setPage}
+            total={total}
+          />
+        )}
+      </main>
+    </LikeProvider>
   );
 };
 

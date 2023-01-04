@@ -1,9 +1,15 @@
 import React from "react";
+import LikeContext from "../contexts/likeContext";
 import Paginacion from "./Paginacion";
 
 import Pokemon from "./Pokemon";
 
+const { useContext } = React;
+
 const Pokedex = (props) => {
+  const { likedPokemons } = useContext(LikeContext);
+  //debugger;
+  console.log(likedPokemons);
   const { pokemons, page, setPage, total, carga } = props;
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
@@ -30,6 +36,8 @@ const Pokedex = (props) => {
     <div>
       <section class="pkDex">
         <h1>POKÉDEX DE KANTO</h1>
+
+        <div>Favoritos:{likedPokemons.length}</div>
         <div class="resultados">
           <div class="filtro">
             <p>Mostrar Filtros</p>
