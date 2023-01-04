@@ -1,14 +1,23 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { getPokemonData, getPokemons } from "../api";
+import { getPokemonData, getPokemons, searchPokemon } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
 import { LikeProvider } from "../contexts/likeContext";
+import Searchbar from "../components/Searchbar";
+import Navbar from "../components/Navbar";
+import BusquedaDex from "../components/BusquedaDex";
 
 const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
-
+export const onSearch = async (pokemon) => {
+  debugger;
+  setCarga(true);
+  const result = await searchPokemon(pokemon);
+  setPokemons([result]);
+  setCarga(false);
+};
 const PokeDex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
@@ -62,10 +71,19 @@ const PokeDex = () => {
     debugger;
     window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
   };
+
+  const onSearch = async (pokemon) => {
+    setCarga(true);
+    const result = await searchPokemon(pokemon);
+    setPokemons([result]);
+    setCarga(false);
+  };
+
   return (
     <LikeProvider
       value={{ likedPokemons: like, updateLikedPokemons: updateLikedPokemons }}
     >
+      <BusquedaDex onSearch={onSearch} />
       <main>
         {carga ? (
           <div>Cargando Pokemons...</div>

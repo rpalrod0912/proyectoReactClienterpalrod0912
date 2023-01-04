@@ -21,7 +21,7 @@ const Searchbar = (props) => {
   };
 
   return (
-    <div className="search">
+    <div className="busqueda">
       <input
         type="input"
         placeholder={search}

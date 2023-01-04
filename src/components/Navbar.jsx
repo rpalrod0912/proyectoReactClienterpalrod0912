@@ -12,7 +12,7 @@ const Navbar = () => {
         <img src={recortado} className="logo" />
       </NavLink>
 
-      <Searchbar></Searchbar>
+      <Searchbar />
       <nav className="menuHTML">
         <label for="menu-toggle">
           <div className="botonMenu">
