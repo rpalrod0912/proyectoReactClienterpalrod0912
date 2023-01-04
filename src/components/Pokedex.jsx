@@ -1,7 +1,7 @@
 import React from "react";
 import LikeContext from "../contexts/likeContext";
 import Paginacion from "./Paginacion";
-
+import { ColorRing } from "react-loader-spinner";
 import Pokemon from "./Pokemon";
 
 const { useContext } = React;
@@ -44,7 +44,21 @@ const Pokedex = (props) => {
             <img src="assets/images/Flecha.png" />
           </div>
           {carga ? (
-            <div>Cargando Pokemons..</div>
+            <ColorRing
+              visible={true}
+              height="400"
+              width="400"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{
+                display: "flex",
+                margin: "0 auto",
+              }}
+              wrapperClass="blocks-wrapper"
+              colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            />
           ) : (
             <div class="cardsDex">
               {pokemons.map((pokemon, idx) => {
