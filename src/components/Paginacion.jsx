@@ -2,7 +2,7 @@ import React from "react";
 import flecha from "../images/arrow-point-to-right.png";
 
 const Paginacion = (props) => {
-  debugger;
+  //debugger;
   console.log(props);
   const { onLeftClick, onRightClick, page, totalPages } = props;
   return (

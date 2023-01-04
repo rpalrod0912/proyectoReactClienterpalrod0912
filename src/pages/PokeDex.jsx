@@ -7,6 +7,8 @@ import { LikeProvider } from "../contexts/likeContext";
 
 const { useState, useEffect } = React;
 
+const localStorageId = "liked_pokemon";
+
 const PokeDex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
@@ -30,7 +32,20 @@ const PokeDex = () => {
     } catch (err) {}
   };
 
+  const cargaLikedPokemons = () => {
+    //debugger;
+    const pokemons =
+      JSON.parse(window.localStorage.getItem(localStorageId)) || [];
+    setLike(pokemons);
+  };
+
   useEffect(() => {
+    console.log("Pokemons fav.....");
+    cargaLikedPokemons();
+  }, []);
+
+  useEffect(() => {
+    //Obtenemos todos los pKMNS
     fetchPokemons();
   }, [page]);
 
@@ -44,6 +59,8 @@ const PokeDex = () => {
       actualizado.push(name);
     }
     setLike(actualizado);
+    debugger;
+    window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
   };
   return (
     <LikeProvider
