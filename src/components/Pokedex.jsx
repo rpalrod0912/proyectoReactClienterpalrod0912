@@ -35,7 +35,7 @@ const Pokedex = (props) => {
   return (
     <div>
       <section class="pkDex">
-        <h1>POKÉDEX DE KANTO</h1>
+        <h1>POKÉDEX NACIONAL</h1>
 
         <div>Favoritos:{likedPokemons.length}</div>
         <div class="resultados">
