@@ -75,7 +75,7 @@ const PokeDex = () => {
       actualizado.push(name);
     }
     setLike(actualizado);
-    pokedex;
+
     debugger;
     window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
   };

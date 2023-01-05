@@ -8,7 +8,7 @@ import { ColorRing } from "react-loader-spinner";
 const Vista = (props) => {
   //Recibe las props routing
   const [carga, setCarga] = useState(true);
-
+  const [filtrado, setFiltrado] = useState([]);
   const [data, setData] = useState([]);
   const location = useLocation();
   const { state } = location;
@@ -22,16 +22,34 @@ const Vista = (props) => {
         const data = await response.json();
         //debugger;
         //console.log(data);
-        if (typeof data === "object" && typeof data !== []) {
+        if (typeof data === "object" /*&& data !== []*/) {
           setData(data);
           setCarga(false);
+          //Filtramos el array filtered_FlavorEntries para que solo recoga textos en un idioma
+          const filteredFlavorTextEntries = data.flavor_text_entries.filter(
+            (element) => element.language.name === "es"
+          );
+          const flavorTextEntry =
+            filteredFlavorTextEntries.length > 0
+              ? filteredFlavorTextEntries[0]
+              : {};
+          //console.log(filteredFlavorTextEntries);
+          //console.log(flavorTextEntry);
+          //debugger;
+          const flavorText = flavorTextEntry.flavor_text;
+          //console.log(flavorText);
+          setFiltrado(flavorText);
         }
       };
       getDescription(state.pokemon.id);
     } catch (err) {}
   }, []);
+
+  console.log(state.pokemon);
   console.log(data);
   console.log(carga);
+  debugger;
+  console.log(filtrado);
 
   //data.flavor_text_entries[50].flavor_text
   //state.pokemon
@@ -88,15 +106,14 @@ const Vista = (props) => {
                 </div>
                 <div className="info">
                   <h1>{state.pokemon.name}</h1>
-                  <p className="p1">
-                    {data.flavor_text_entries[50].flavor_text}
-                  </p>
+
+                  <p className="p1">{filtrado}</p>
                 </div>
               </article>
               <article className="stats">
                 <p>
                   Altura
-                  <span className="pkData">0.4m</span>
+                  <span className="pkData">{state.pokemon.height} </span>
                 </p>
                 <p>
                   Categoría
