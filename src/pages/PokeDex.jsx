@@ -1,6 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { getPokemonData, getPokemons, searchPokemon } from "../api";
+import {
+  getDescription,
+  getPokemonData,
+  getPokemons,
+  searchPokemon,
+} from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
 import { LikeProvider } from "../contexts/likeContext";
@@ -96,7 +101,7 @@ const PokeDex = () => {
     setCarga(false);
     setBuscando(false);
   };
-
+  console.log(carga);
   return (
     <LikeProvider
       value={{ likedPokemons: like, updateLikedPokemons: updateLikedPokemons }}

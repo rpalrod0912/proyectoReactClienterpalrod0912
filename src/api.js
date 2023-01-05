@@ -20,7 +20,7 @@ export const getPokemons = async (limit = 1154, offset = 0) => {
 //La api proporciona el pokemon y una url, por loq eu debemo extraer los datos manualmente de cada pokemon desde la url
 export const getPokemonData = async (url) => {
   try {
-    debugger;
+    //debugger;
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -40,13 +40,12 @@ export const getPokemons2 = async (url) => {
 
 export const getDescription = async (id) => {
   try {
+    debugger;
     let url = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
     const response = await fetch(url);
     const data = await response.json();
     //debugger;
     //console.log(data);
-    debugger;
-    const myData = data.Object;
     return data;
   } catch (err) {}
 };
