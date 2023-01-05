@@ -13,9 +13,9 @@ const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
 
-const PokeDex = () => {
+const JohtoDex = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [total, setTotal] = useState();
   const [carga, setCarga] = useState(true);
   const [like, setLike] = useState([]);
@@ -25,17 +25,17 @@ const PokeDex = () => {
   const fetchPokemons = async () => {
     try {
       setCarga(true);
-      const data = await getPokemons(25, 25 * page);
       debugger;
-      console.log(data);
-      console.log(data.results);
+
+      const data = await getPokemons(11, 151 * page);
+      //console.log(data.results);
       const arrPromesas = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(data.count / 25));
+      setTotal(Math.ceil(data.count / 86));
       setNoExiste(false);
       console.log(results);
     } catch (err) {}
@@ -49,6 +49,7 @@ const PokeDex = () => {
   };
 
   useEffect(() => {
+    console.log("Pokemons fav.....");
     cargaLikedPokemons();
   }, []);
 
@@ -70,7 +71,6 @@ const PokeDex = () => {
       actualizado.push(name);
     }
     setLike(actualizado);
-    pokedex;
     debugger;
     window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
   };
@@ -119,4 +119,4 @@ const PokeDex = () => {
   );
 };
 
-export default PokeDex;
+export default JohtoDex;

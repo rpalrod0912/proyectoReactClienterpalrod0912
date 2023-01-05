@@ -11,6 +11,7 @@ import Register from "../pages/Register";
 import PokeDex from "../pages/PokeDex";
 import KantoDex from "../pages/KantoDex";
 import JohtoDex from "../pages/JohtoDex";
+import Vista from "../pages/Vista";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: "/Johto",
         element: <JohtoDex />,
+      },
+      {
+        path: "/Pokemon",
+        element: <Vista pokemon />,
       },
     ],
   },

@@ -1,6 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { getPokemonData, getPokemons, searchPokemon } from "../api";
+import {
+  getPokemonData,
+  getPokemons,
+  getPokemons2,
+  searchPokemon,
+} from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
 import { LikeProvider } from "../contexts/likeContext";
@@ -26,10 +31,13 @@ const JohtoDex = () => {
     try {
       setCarga(true);
       debugger;
-
-      const data = await getPokemons(11, 151 * page);
+      const pkmData = await getPokemons2();
+      console.log(pkmData.pokemon_species);
+      const pkmnsData = pkmData.pokemon_species;
+      let nmPages = pkmnsData % 20;
+      const data = pkmnsData;
       //console.log(data.results);
-      const arrPromesas = data.results.map(async (pokemon) => {
+      const arrPromesas = data.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(arrPromesas);
