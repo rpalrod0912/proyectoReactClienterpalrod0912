@@ -12,6 +12,7 @@ import PokeDex from "../pages/PokeDex";
 import KantoDex from "../pages/KantoDex";
 import JohtoDex from "../pages/JohtoDex";
 import Vista from "../pages/Vista";
+import Favoritos from "../pages/Favoritos";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "/Pokemon",
         element: <Vista pokemon />,
+      },
+      {
+        path: "/Favoritos",
+        element: <Favoritos />,
       },
     ],
   },

@@ -30,14 +30,28 @@ const JohtoDex = () => {
   const fetchPokemons = async () => {
     try {
       setCarga(true);
+      const data = await getPokemons(99, 151);
+
+      //const myData = data.results.splice(0, 25);
+      //debugger;
+      let myData = [];
+      let x = 0;
+      let myArr = [];
+      for (let i = 0; i <= data.results.length; i++) {
+        x++;
+        myArr.push(data.results[i]);
+        if (x == 20) {
+          x = 0;
+          myData.push(myArr);
+          myArr = [];
+        }
+      }
       debugger;
-      const pkmData = await getPokemons2();
-      console.log(pkmData.pokemon_species);
-      const pkmnsData = pkmData.pokemon_species;
-      let nmPages = pkmnsData % 20;
-      const data = pkmnsData;
-      //console.log(data.results);
-      const arrPromesas = data.map(async (pokemon) => {
+
+      console.log(data.results);
+      //console.log(myData);
+
+      const arrPromesas = myData.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(arrPromesas);

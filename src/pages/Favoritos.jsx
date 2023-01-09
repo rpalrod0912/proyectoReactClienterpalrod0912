@@ -18,7 +18,7 @@ const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
 
-const PokeDex = () => {
+const Favoritos = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
@@ -30,19 +30,15 @@ const PokeDex = () => {
   const fetchPokemons = async () => {
     try {
       setCarga(true);
-      const data = await getPokemons(25, 25 * page);
-      //debugger;
       debugger;
-      console.log(like);
-      console.log(data);
-      console.log(data.results);
-      const arrPromesas = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.url);
-      });
-      const results = await Promise.all(arrPromesas);
+
+      const data = JSON.parse(window.localStorage.getItem(localStorageId));
+      //debugger;
+
+      const results = await Promise.all(data);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(data.count / 25));
+      setTotal(Math.ceil(2));
       setNoExiste(false);
       console.log(results);
     } catch (err) {}
@@ -66,7 +62,7 @@ const PokeDex = () => {
     }
     //Obtenemos todos los pKMNS
     fetchPokemons();
-  }, [page]);
+  }, []);
 
   const updateLikedPokemons = (pokemon) => {
     //console.log(name);
@@ -82,6 +78,7 @@ const PokeDex = () => {
 
     debugger;
     window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
+    fetchPokemons();
   };
 
   const onSearch = async (pokemon) => {
@@ -105,8 +102,7 @@ const PokeDex = () => {
     setCarga(false);
     setBuscando(false);
   };
-  debugger;
-  console.log(like);
+
   return (
     <LikeProvider
       value={{ likedPokemons: like, updateLikedPokemons: updateLikedPokemons }}
@@ -129,4 +125,4 @@ const PokeDex = () => {
   );
 };
 
-export default PokeDex;
+export default Favoritos;

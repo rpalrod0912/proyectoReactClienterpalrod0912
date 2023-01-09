@@ -10,7 +10,9 @@ export const getPokemons = async (limit = 1154, offset = 0) => {
   try {
     let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const response = await fetch(url);
+    //debugger;
     const data = await response.json();
+    console.log(data);
     //debugger;
     //console.log(data);
     return data;
@@ -32,6 +34,19 @@ export const getPokemons2 = async (url) => {
     let url = `https://pokeapi.co/api/v2/generation/2/`;
     const response = await fetch(url);
     const data = await response.json();
+    //debugger;
+    //console.log(data);
+    return data;
+  } catch (err) {}
+};
+
+export const getJohtoPokemons = async (limit = 1154, offset = 0) => {
+  try {
+    let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+    const response = await fetch(url);
+    debugger;
+    const data = await response.json();
+    console.log(data);
     //debugger;
     //console.log(data);
     return data;

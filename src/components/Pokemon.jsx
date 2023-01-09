@@ -14,10 +14,16 @@ const Pokemon = (props) => {
 
   const redHeart = "❤️";
   const blackHeart = "🖤";
-  const liked = likedPokemons.includes(pokemon.name) ? redHeart : blackHeart;
+  debugger;
+  const liked =
+    likedPokemons.map((o) => o.name).indexOf(pokemon.name) >= 0
+      ? redHeart
+      : blackHeart;
+
+  console.log(liked);
   const meGusta = (e) => {
     e.preventDefault();
-    updateLikedPokemons(pokemon.name);
+    updateLikedPokemons(pokemon);
   };
 
   return (
