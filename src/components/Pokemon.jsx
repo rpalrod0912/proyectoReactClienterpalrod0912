@@ -22,7 +22,7 @@ const Pokemon = (props) => {
 
   return (
     <div class="cardPkm">
-      <NavLink to="/Pokemon">
+      <NavLink to={{ pathname: "/Pokemon" }} state={{ pokemon: pokemon }}>
         <div class="circle">
           <a>
             <img

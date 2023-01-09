@@ -4,12 +4,17 @@ import { Link, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
+import flechaIzq from "../images/arrow-point-to-right.png";
+import { getPokemonData } from "../api";
 
 const Vista = (props) => {
   //Recibe las props routing
   const [carga, setCarga] = useState(true);
   const [filtrado, setFiltrado] = useState([]);
   const [data, setData] = useState([]);
+  const [evo, setEvolution] = useState([]);
+  const [evo1, setEvo1] = useState([]);
+  const [evo2, setEvo2] = useState([]);
   const location = useLocation();
   const { state } = location;
 
@@ -22,9 +27,16 @@ const Vista = (props) => {
         const data = await response.json();
         //debugger;
         //console.log(data);
-        if (typeof data === "object" /*&& data !== []*/) {
+        if (typeof data === "object" && typeof data !== "undefined") {
+          //debugger;
           setData(data);
           setCarga(false);
+          //Para Obtener El id para obtener la llamada a la evolucion debemos modificar el string obtenido en Data
+          let evoUrl = data.evolution_chain.url;
+          const evoId = evoUrl.charAt(evoUrl.length - 2);
+          const evolution = getEvolutionChain(evoId);
+
+          //console.log(evolution);
           //Filtramos el array filtered_FlavorEntries para que solo recoga textos en un idioma
           const filteredFlavorTextEntries = data.flavor_text_entries.filter(
             (element) => element.language.name === "es"
@@ -43,16 +55,43 @@ const Vista = (props) => {
       };
       getDescription(state.pokemon.id);
     } catch (err) {}
+    const getEvolutionChain = async (id) => {
+      try {
+        //debugger;
+        let url = `https://pokeapi.co/api/v2/evolution-chain/${id}/`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (
+          (typeof data === "object" && typeof data !== "undefined") ||
+          data.length > 0
+        ) {
+          debugger;
+          setEvolution(data);
+          console.log(evo);
+          //console.log(data.chain.evolves_to[0]);
+          //console.log(evolution.chain.evolves_to[0].species.url);
+          //setEvo1(getPokemonData(evolution.chain.evolves_to[0].species.url));
+          //console.log(evo1);
+        }
+      } catch (err) {}
+    };
   }, []);
+  //console.log(evolution.chain);
+  //console.log(evolution.chain);
 
-  console.log(state.pokemon);
-  console.log(data);
-  console.log(carga);
-  debugger;
-  console.log(filtrado);
+  //console.log(state.pokemon);
+  //console.log(data);
+  //debugger;
+  //console.log(carga);
+  //debugger;
+  //console.log(filtrado);
 
   //data.flavor_text_entries[50].flavor_text
   //state.pokemon
+
+  //const chain = evolution.chain;
+  //console.log(chain);
+
   return (
     <main className="bdy">
       <section className="dexBdy">
@@ -76,15 +115,9 @@ const Vista = (props) => {
           ) : (
             <>
               <div className="nav">
-                <img
-                  className="izq"
-                  src="assets/images/arrow-point-to-right.png"
-                />
+                <img className="izq" src={flechaIzq} />
                 <p>Nº {state.pokemon.id}</p>
-                <img
-                  className="der"
-                  src="assets/images/arrow-point-to-right.png"
-                />
+                <img className="der" src={flechaIzq} />
               </div>
               <article className="pkmDex">
                 <div className="pkmPreset">
@@ -96,7 +129,6 @@ const Vista = (props) => {
                     />
                   </div>
 
-                  <p>{data.name}</p>
                   <div className="types">
                     <p className="p1">Tipo</p>
                     <p className="p1">Debilidad</p>

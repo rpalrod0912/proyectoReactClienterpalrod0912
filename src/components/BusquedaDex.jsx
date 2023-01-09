@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import busqueda from "../images/Logo Busqueda.png";
 import { searchPokemon } from "../api";
+import busquedaContext from "../contexts/searchContext";
 const { useContext } = React;
 
-const Searchbar = (props) => {
+const BusquedaDex = (props) => {
   const { onSearch } = props;
+
   const [search, setSearch] = useState("");
   const [pokemon, setPokemon] = useState();
 
@@ -39,4 +41,4 @@ const Searchbar = (props) => {
   );
 };
 
-export default Searchbar;
+export default BusquedaDex;
