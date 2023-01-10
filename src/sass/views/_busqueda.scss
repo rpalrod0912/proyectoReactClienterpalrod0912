@@ -18,7 +18,7 @@
     font-size: 2.5vw;
   }
   .resultados {
-    border-radius: 25px 25px 0px 0px;
+    border-radius: 25px 25px 25px 25px;
     height: auto;
     width: 80%;
     background-color: var(--color__bckDex);
@@ -44,6 +44,8 @@
     //Estilos de cada card, pues la vista de los pokemon se ven como una card individual que se ajustaran a la pantalla con el wrap
     //Resto del contenedor resultados
     .cardsDex {
+      border-radius: 25px 25px 25px 25px;
+
       justify-content: center;
       display: flex;
       justify-content: space-around;

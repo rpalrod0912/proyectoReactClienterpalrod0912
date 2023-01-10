@@ -16,11 +16,11 @@ const { useContext } = React;
 const VerPokemon = (props) => {
   const { pokemon } = props;
 
-  debugger;
+  //debugger;
   console.log(pokemon.name);
 
   const verVista = () => {
-    debugger;
+    //debugger;
     return <Vista pokemon={pokemon} />;
   };
 

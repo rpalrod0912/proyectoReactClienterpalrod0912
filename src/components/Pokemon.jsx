@@ -14,7 +14,7 @@ const Pokemon = (props) => {
 
   const redHeart = "❤️";
   const blackHeart = "🖤";
-  debugger;
+  //debugger;
   const liked =
     likedPokemons.map((o) => o.name).indexOf(pokemon.name) >= 0
       ? redHeart

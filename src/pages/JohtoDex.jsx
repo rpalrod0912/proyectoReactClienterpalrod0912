@@ -1,11 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import {
-  getPokemonData,
-  getPokemons,
-  getPokemons2,
-  searchPokemon,
-} from "../api";
+import { getPokemonData, getPokemons, searchPokemon } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
 import { LikeProvider } from "../contexts/likeContext";
@@ -26,40 +21,31 @@ const JohtoDex = () => {
   const [like, setLike] = useState([]);
   const [noExiste, setNoExiste] = useState(false);
   const [buscando, setBuscando] = useState(false);
+  const [tipo, setTipo] = useState("");
+  const [pkmns, setPkmns] = useState(151);
 
   const fetchPokemons = async () => {
     try {
-      setCarga(true);
-      const data = await getPokemons(99, 151);
+      debugger;
+      setTipo("JOHTO");
 
-      //const myData = data.results.splice(0, 25);
-      //debugger;
-      let myData = [];
-      let x = 0;
-      let myArr = [];
-      for (let i = 0; i <= data.results.length; i++) {
-        x++;
-        myArr.push(data.results[i]);
-        if (x == 20) {
-          x = 0;
-          myData.push(myArr);
-          myArr = [];
-        }
-      }
+      setCarga(true);
       debugger;
 
-      console.log(data.results);
-      //console.log(myData);
+      const data = await getPokemons(11, pkmns);
 
-      const arrPromesas = myData.map(async (pokemon) => {
+      //console.log(data.results);
+      const arrPromesas = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(data.count / 86));
+      setTotal(10);
       setNoExiste(false);
       console.log(results);
+      console.log(pkmns);
+      debugger;
     } catch (err) {}
   };
 
@@ -134,6 +120,9 @@ const JohtoDex = () => {
             page={page}
             setPage={setPage}
             total={total}
+            pkmns={pkmns}
+            tipo={tipo}
+            setPkmns={setPkmns}
           />
         </main>
       )}

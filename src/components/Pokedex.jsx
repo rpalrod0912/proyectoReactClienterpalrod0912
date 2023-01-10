@@ -10,15 +10,18 @@ const Pokedex = (props) => {
   const { likedPokemons } = useContext(LikeContext);
   //debugger;
   console.log(likedPokemons);
-  const { pokemons, page, setPage, total, carga, tipo } = props;
+  const { pokemons, page, setPage, total, carga, tipo, pkmns, setPkmns } =
+    props;
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
     setPage(nextPage);
+    setPkmns(pkmns - 10);
   };
 
   const nextPage = () => {
     const nextPage = Math.min(page + 1, total);
     setPage(nextPage);
+    setPkmns(pkmns + 10);
   };
   //console.log(props);
 
