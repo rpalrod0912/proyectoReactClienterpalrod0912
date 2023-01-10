@@ -77,10 +77,13 @@
     }
   }
   p {
-    color: var(--color__texto);
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color__texto2);
     font-family: "blogger_sansbold";
     font-weight: normal;
-    font-size: 2vw;
+    font-size: 1rem;
     margin-top: 5%;
     padding-bottom: 1%;
     text-decoration: none;

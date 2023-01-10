@@ -356,11 +356,10 @@ const Register = () => {
               id="pwdnote"
               className={!isChecked ? "instructions" : "offscreen"}
               style={{
-                height: "50px",
                 display: "flex",
                 margin: "0 auto",
-                width: "55rem",
-                marginBottom: "3rem",
+                width: "30%",
+                marginBottom: "2rem",
               }}
             >
               <FontAwesomeIcon icon={faInfoCircle} />

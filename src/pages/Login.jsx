@@ -1,39 +1,223 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import { useRef, useState, useEffect } from "react";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "../api/axios";
 import iconRegistro from "../images/IconoRegistro.png";
 
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
+const LOGIN_URL = "/login";
 const Login = () => {
+  const userRef = useRef();
+  const errREf = useRef();
+
+  const [user, setUser] = useState("");
+  const [validName, setValidName] = useState(false);
+  const [userFocus, setUserFocus] = useState(false);
+
+  const [pwd, setPwd] = useState("");
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+  const [exito, setExito] = useState(false);
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    const result = USER_REGEX.test(user);
+    console.log(result);
+    console.log(user);
+    setValidName(result);
+  }, [user]);
+
+  useEffect(() => {
+    const result = PWD_REGEX.test(pwd);
+    console.log(result);
+    console.log(pwd);
+    setValidPwd(result);
+  }, [pwd]);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, pwd]);
+
+  const handleSubmit = async (e) => {
+    debugger;
+    e.preventDefault();
+    //Si se intenta habilitar el boton submit por maneras externas con los campos incorrectos
+    //Lo volvemos a comprobar para prevenir que se introduzcan campos incorrectos
+    const usuario = USER_REGEX.test(user);
+    const contra = PWD_REGEX.test(pwd);
+    debugger;
+    if (!usuario || !contra) {
+      setErrMsg("Entrada Inválida");
+      return;
+    }
+    console.log(user, pwd);
+    setExito(true);
+    /*
+    try {
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ user, pwd }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      debugger;
+      fs.appendFile("account.json", user, pwd);
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+      //Reiniciamos campos
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("Sin respuesta del servidor..");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Nombre de Usuario ya existe");
+      } else {
+        setErrMsg("Registro Fallidos");
+      }
+      errRef.current.focus();
+    }*/
+  };
   return (
     <main>
-      <section className="login">
-        <h1>INICIAR SESIÓN</h1>
-        <form action="" method="post">
-          <label>Usuario</label>
-          <input type="text" maxlength="20" />
-          <label>Contraseña</label>
-          <input type="text" maxlength="20" />
-          <label className="check">
-            <input type="checkbox" />
-            Recordar mi contraseña
-          </label>
-          <div>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <button className="logbtn">
-                <p>INICIAR SESIÓN</p>
-              </button>
-            </Link>
-          </div>
-        </form>
+      {exito ? (
+        <section className="register">
+          <h1> Bienvenido {user}, has Iniciado Sesión</h1>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <button className="signUp">Ir A Inicio</button>
+          </Link>
+        </section>
+      ) : (
+        <section className="login">
+          <h1>INICIAR SESIÓN</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">
+              Usuario
+              <span>
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validName ? "valid" : "hide"}
+                />
+              </span>
+              <span>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validName || !user ? "hide" : "invalid"}
+                />
+              </span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              value={user}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+            />
+            <p
+              id="uidnote"
+              className={
+                userFocus && user && !validName ? "instructions" : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              4 a 24 caracteres.
+              <br />
+              Debe empezar con una Letra.
+              <br />
+              Se permiten letras numeros y caracteres especiales.
+            </p>
+            <label htmlFor="password">
+              Contraseña
+              <FontAwesomeIcon
+                icon={faCheck}
+                className={validPwd ? "valid" : "hide"}
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={validPwd || !pwd ? "hide" : "invalid"}
+              />
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            <p
+              id="pwdnote"
+              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              8 a 24 caracteres.
+              <br />
+              Debe incluir Letras maysuculas y minusculas, un numero y un
+              caracter especial.
+              <br />
+              Caracteres especiales Permitidos:{" "}
+              <span aria-label="exclamation mark">!</span>{" "}
+              <span aria-label="at symbol">@</span>{" "}
+              <span aria-label="hashtag">#</span>{" "}
+              <span aria-label="dollar sign">$</span>{" "}
+              <span aria-label="percent">%</span>
+            </p>
+            <label className="check">
+              <input type="checkbox" />
+              Recordar mi contraseña
+            </label>
 
-        <p>¿No tienes una cuenta? ¡Regístrate Ahora!</p>
-        <Link to="/register" style={{ textDecoration: "none" }}>
-          <button>
-            <p>REGISTRARME</p>
-          </button>
-        </Link>
-        <img src={iconRegistro} className="pikachuLogin" />
-      </section>
+            <button
+              className="logbtn"
+              disabled={!validName || !validPwd ? true : false}
+            >
+              INICIAR SESIÓN
+            </button>
+          </form>
+          <p>
+            {!validName || !validPwd ? (
+              <p id="pwdnote" className="instructions">
+                <FontAwesomeIcon icon={faInfoCircle} />
+                Debes Rellenar Ambos campos para Iniciar Sesión
+              </p>
+            ) : (
+              <p></p>
+            )}
+          </p>
+          <p>¿No tienes una cuenta? ¡Regístrate Ahora!</p>
+          <Link to="/register" style={{ textDecoration: "none" }}>
+            <button>
+              <p>REGISTRARME</p>
+            </button>
+          </Link>
+          <img src={iconRegistro} className="pikachuLogin" />
+        </section>
+      )}
     </main>
   );
 };
