@@ -26,10 +26,12 @@ const PokeDex = () => {
   const [like, setLike] = useState([]);
   const [noExiste, setNoExiste] = useState(false);
   const [buscando, setBuscando] = useState(false);
+  const [tipo, setTipo] = useState("");
 
   const fetchPokemons = async () => {
     try {
       setCarga(true);
+      setTipo("NACIONAL");
       const data = await getPokemons(25, 25 * page);
       //debugger;
       debugger;
@@ -122,6 +124,7 @@ const PokeDex = () => {
             page={page}
             setPage={setPage}
             total={total}
+            tipo={tipo}
           />
         </main>
       )}

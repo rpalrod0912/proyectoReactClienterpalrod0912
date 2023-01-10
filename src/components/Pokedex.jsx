@@ -10,7 +10,7 @@ const Pokedex = (props) => {
   const { likedPokemons } = useContext(LikeContext);
   //debugger;
   console.log(likedPokemons);
-  const { pokemons, page, setPage, total, carga } = props;
+  const { pokemons, page, setPage, total, carga, tipo } = props;
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
     setPage(nextPage);
@@ -35,7 +35,7 @@ const Pokedex = (props) => {
   return (
     <div>
       <section class="pkDex">
-        <h1>POKÉDEX NACIONAL</h1>
+        <h1>POKÉDEX {tipo}</h1>
 
         <div>Favoritos:{likedPokemons.length}</div>
         <div class="resultados">
