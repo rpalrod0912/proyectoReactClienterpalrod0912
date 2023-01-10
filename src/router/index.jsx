@@ -13,6 +13,9 @@ import KantoDex from "../pages/KantoDex";
 import JohtoDex from "../pages/JohtoDex";
 import Vista from "../pages/Vista";
 import Favoritos from "../pages/Favoritos";
+import HoennDex from "../pages/HoennDex";
+import SinnohDex from "../pages/SinnohDex";
+import TeseliaDex from "../pages/TeseliaDex";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +71,18 @@ export const router = createBrowserRouter([
       {
         path: "/Favoritos",
         element: <Favoritos />,
+      },
+      {
+        path: "/Hoenn",
+        element: <HoennDex />,
+      },
+      {
+        path: "/Sinnoh",
+        element: <SinnohDex />,
+      },
+      {
+        path: "/Teselia",
+        element: <TeseliaDex />,
       },
     ],
   },

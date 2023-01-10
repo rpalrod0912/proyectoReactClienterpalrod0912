@@ -13,7 +13,7 @@ const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
 
-const JohtoDex = () => {
+const TeseliaDex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
@@ -22,8 +22,8 @@ const JohtoDex = () => {
   const [noExiste, setNoExiste] = useState(false);
   const [buscando, setBuscando] = useState(false);
   const [tipo, setTipo] = useState("");
-  const [pkmns, setPkmns] = useState(151);
-  const [cantPkmns, setCantPkmns] = useState(10);
+  const [pkmns, setPkmns] = useState(493);
+  const [cantPkmns, setCantPkmns] = useState(13);
 
   const fetchPokemons = async () => {
     try {
@@ -42,7 +42,7 @@ const JohtoDex = () => {
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(9);
+      setTotal(11);
       setNoExiste(false);
       console.log(results);
       console.log(pkmns);
@@ -133,4 +133,4 @@ const JohtoDex = () => {
   );
 };
 
-export default JohtoDex;
+export default TeseliaDex;

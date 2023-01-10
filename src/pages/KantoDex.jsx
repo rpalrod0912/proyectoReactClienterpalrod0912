@@ -15,7 +15,7 @@ const localStorageId = "liked_pokemon";
 
 const KantoDex = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState();
   const [total, setTotal] = useState();
   const [carga, setCarga] = useState(true);
   const [like, setLike] = useState([]);

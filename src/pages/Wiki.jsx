@@ -62,19 +62,25 @@ const Wiki = () => {
             <a>
               <img class="dex1" src={dex3} />
             </a>
-            <button>HOENN</button>
+            <Link to="/Hoenn" style={{ textDecoration: "none" }}>
+              <button>HOENN</button>
+            </Link>
           </div>
           <div class="card">
             <a>
               <img class="dex1" src={dex4} />
             </a>
-            <button>SINNOH</button>
+            <Link to="/Sinnoh" style={{ textDecoration: "none" }}>
+              <button>SINNOH</button>
+            </Link>
           </div>
           <div class="card">
             <a>
               <img class="dex1" src={dex5} />
             </a>
-            <button>ALEATORIO</button>
+            <Link to="/Teselia" style={{ textDecoration: "none" }}>
+              <button>TESELIA</button>
+            </Link>
           </div>
         </div>
       </section>
