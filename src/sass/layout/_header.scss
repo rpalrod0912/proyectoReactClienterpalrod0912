@@ -8,6 +8,10 @@ header {
   flex-direction: row;
   max-height: 40vh;
   height: auto;
+  //Añadidopara React
+  align-items: flex-end;
+  justify-content: space-between;
+  //
   a {
     width: 20%;
   }
@@ -32,6 +36,9 @@ header {
     height: 30px;
     border-radius: 15px;
     background-color: black;
+  }
+  .esconderSearch {
+    visibility: hidden;
   }
   .buttonSearch {
     color: #fff;

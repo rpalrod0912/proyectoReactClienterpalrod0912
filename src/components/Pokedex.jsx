@@ -22,9 +22,11 @@ const Pokedex = (props) => {
     cantPkmns,
     setCantPkmns,
   } = props;
+  debugger;
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
     setPage(nextPage);
+
     setPkmns(pkmns - cantPkmns);
   };
 

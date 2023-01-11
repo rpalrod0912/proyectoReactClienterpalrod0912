@@ -105,6 +105,48 @@ const Login = () => {
       ) : (
         <section className="login">
           <h1>INICIAR SESIÓN</h1>
+          <p
+            id="uidnote"
+            className={
+              userFocus && user && !validName ? "instructions" : "offscreen"
+            }
+            style={{
+              gridColumnStart: 1,
+              gridColumnEnd: 3,
+              marginBottom: "5rem",
+              marginTop: "1rem",
+            }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            4 a 24 caracteres.
+            <br />
+            Debe empezar con una Letra.
+            <br />
+            Se permiten letras numeros y caracteres especiales.
+          </p>
+          <p
+            id="pwdnote"
+            className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+            style={{
+              gridColumnStart: 1,
+              gridColumnEnd: 3,
+              marginBottom: "2rem",
+              marginTop: "1rem",
+            }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            8 a 24 caracteres.
+            <br />
+            Debe incluir Letras maysuculas y minusculas, un numero y un caracter
+            especial.
+            <br />
+            Caracteres especiales Permitidos:{" "}
+            <span aria-label="exclamation mark">!</span>{" "}
+            <span aria-label="at symbol">@</span>{" "}
+            <span aria-label="hashtag">#</span>{" "}
+            <span aria-label="dollar sign">$</span>{" "}
+            <span aria-label="percent">%</span>
+          </p>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
               Usuario
@@ -135,19 +177,7 @@ const Login = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-            <p
-              id="uidnote"
-              className={
-                userFocus && user && !validName ? "instructions" : "offscreen"
-              }
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              4 a 24 caracteres.
-              <br />
-              Debe empezar con una Letra.
-              <br />
-              Se permiten letras numeros y caracteres especiales.
-            </p>
+
             <label htmlFor="password">
               Contraseña
               <FontAwesomeIcon
@@ -170,23 +200,7 @@ const Login = () => {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
-            <p
-              id="pwdnote"
-              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              8 a 24 caracteres.
-              <br />
-              Debe incluir Letras maysuculas y minusculas, un numero y un
-              caracter especial.
-              <br />
-              Caracteres especiales Permitidos:{" "}
-              <span aria-label="exclamation mark">!</span>{" "}
-              <span aria-label="at symbol">@</span>{" "}
-              <span aria-label="hashtag">#</span>{" "}
-              <span aria-label="dollar sign">$</span>{" "}
-              <span aria-label="percent">%</span>
-            </p>
+
             <label className="check">
               <input type="checkbox" />
               Recordar mi contraseña

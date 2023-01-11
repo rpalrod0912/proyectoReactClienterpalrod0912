@@ -18,6 +18,27 @@ const Vista = (props) => {
   const location = useLocation();
   const { state } = location;
 
+  const traduccionTipos = {
+    grass: "Planta",
+    electric: "Eléctrico",
+    fire: "Fuego",
+    poison: "Veneno",
+    fighting: "Lucha",
+    fairy: "Hada",
+    ghost: "Fantasma",
+    water: "Agua",
+    ice: "Hielo",
+    flying: "Volador",
+    bug: "Bicho",
+    dark: "Siniestro",
+    steel: "Acero",
+    ground: "Tierra",
+    dragon: "Dragon",
+    psychic: "Psíquico",
+    normal: "Normal",
+    rock: "Roca",
+  };
+
   useEffect(() => {
     try {
       setCarga(true);
@@ -124,13 +145,23 @@ const Vista = (props) => {
                   <div className="circle">
                     <img
                       src={
-                        state.pokemon.sprites.other.dream_world.front_default
+                        state.pokemon.sprites.other.dream_world
+                          .front_default !== null
+                          ? state.pokemon.sprites.other.dream_world
+                              .front_default
+                          : state.pokemon.sprites.front_default
                       }
                     />
                   </div>
 
                   <div className="types">
-                    <p className="p1">Tipo</p>
+                    {state.pokemon.types.map((type, idx) => {
+                      return (
+                        <p className={type.type.name}>
+                          {traduccionTipos[type.type.name]}
+                        </p>
+                      );
+                    })}
                     <p className="p1">Debilidad</p>
                     <p className="typeElectric"></p>
                     <p className="typeGround"></p>

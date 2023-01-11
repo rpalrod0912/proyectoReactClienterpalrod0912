@@ -60,6 +60,9 @@
       border: 1px solid var(--color__secundario);
     }
   }
+  p {
+    width: 40%;
+  }
   //Input checkbox
   .correo {
     margin: auto;
@@ -121,6 +124,12 @@
     input {
       height: auto;
     }
+    p {
+      max-width: 25rem;
+      font-size: 1rem;
+      text-align: center;
+      font-family: "blogger_sansbold";
+    }
     h1 {
       font-size: 1.8rem;
       margin-bottom: 0rem;
@@ -140,6 +149,11 @@
           height: 1.8rem;
           font-size: 1.4rem;
         }
+      }
+      p {
+        width: 15rem;
+        font-size: 1rem;
+        text-align: center;
       }
       .correo,
       .condiciones {

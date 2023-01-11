@@ -146,6 +146,70 @@ const Register = () => {
       ) : (
         <section className="register">
           <h1>REGISTRO</h1>
+          <p
+            id="uidnote"
+            className={
+              userFocus && user && !validName ? "instructions" : "offscreen"
+            }
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            4 a 24 caracteres.
+            <br />
+            Debe empezar con una Letra.
+            <br />
+            Se permiten letras numeros y caracteres especiales.
+          </p>
+
+          <p
+            id="pwdnote"
+            className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            8 a 24 caracteres.
+            <br />
+            Debe incluir Letras maysuculas y minusculas, un numero y un caracter
+            especial.
+            <br />
+            Caracteres especiales Permitidos:{" "}
+            <span aria-label="exclamation mark">!</span>{" "}
+            <span aria-label="at symbol">@</span>{" "}
+            <span aria-label="hashtag">#</span>{" "}
+            <span aria-label="dollar sign">$</span>{" "}
+            <span aria-label="percent">%</span>
+          </p>
+
+          <p
+            id="pwdnote"
+            className={mailFocus && !validMail ? "instructions" : "offscreen"}
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            Debe contener un @
+            <br />
+            Debe contener una extension . al final
+            <br />
+            Ejemplo micorreo@gmail.com
+          </p>
+          <p
+            id="pwdnote"
+            className={dateFocus && !validDate ? "instructions" : "offscreen"}
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            Por favor Introduce una fecha correcta
+            <br />
+          </p>
+          <p
+            id="confirmnote"
+            className={matchFocus && !validMatch ? "instructions" : "offscreen"}
+            style={{ gridColumnStart: 1, gridColumnEnd: 3 }}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+            Las contraseñas no coinciden.
+          </p>
+
           <form onSubmit={handleSubmit}>
             <p
               ref={errRef}
@@ -154,6 +218,7 @@ const Register = () => {
             >
               {errMsg}
             </p>
+
             <div className="contenedor">
               <label htmlFor="username">
                 Usuario
@@ -184,19 +249,7 @@ const Register = () => {
                 onFocus={() => setUserFocus(true)}
                 onBlur={() => setUserFocus(false)}
               />
-              <p
-                id="uidnote"
-                className={
-                  userFocus && user && !validName ? "instructions" : "offscreen"
-                }
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                4 a 24 caracteres.
-                <br />
-                Debe empezar con una Letra.
-                <br />
-                Se permiten letras numeros y caracteres especiales.
-              </p>
+
               <label htmlFor="password">
                 Contraseña
                 <FontAwesomeIcon
@@ -219,23 +272,7 @@ const Register = () => {
                 onFocus={() => setPwdFocus(true)}
                 onBlur={() => setPwdFocus(false)}
               />
-              <p
-                id="pwdnote"
-                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                8 a 24 caracteres.
-                <br />
-                Debe incluir Letras maysuculas y minusculas, un numero y un
-                caracter especial.
-                <br />
-                Caracteres especiales Permitidos:{" "}
-                <span aria-label="exclamation mark">!</span>{" "}
-                <span aria-label="at symbol">@</span>{" "}
-                <span aria-label="hashtag">#</span>{" "}
-                <span aria-label="dollar sign">$</span>{" "}
-                <span aria-label="percent">%</span>
-              </p>
+
               <label htmlFor="confirm_pwd">
                 Repetir Contraseña
                 <FontAwesomeIcon
@@ -259,15 +296,7 @@ const Register = () => {
                 onBlur={() => setMatchFocus(false)}
                 maxlength="20"
               />
-              <p
-                id="confirmnote"
-                className={
-                  matchFocus && !validMatch ? "instructions" : "offscreen"
-                }
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Las contraseñas no coinciden.
-              </p>
+
               <label htmlFor="date">
                 Correo
                 <FontAwesomeIcon
@@ -292,19 +321,7 @@ const Register = () => {
                 onFocus={() => setMailFocus(true)}
                 onBlur={() => setMailFocus(false)}
               />
-              <p
-                id="pwdnote"
-                className={
-                  mailFocus && !validMail ? "instructions" : "offscreen"
-                }
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Debe contener un @
-                <br />
-                Debe contener una extension . al final
-                <br />
-                Ejemplo micorreo@gmail.com
-              </p>
+
               <label htmlFor="Fecha">
                 Fecha
                 <FontAwesomeIcon
@@ -329,16 +346,6 @@ const Register = () => {
                 onFocus={() => setDateFocus(true)}
                 onBlur={() => setDateFocus(false)}
               />
-              <p
-                id="pwdnote"
-                className={
-                  dateFocus && !validDate ? "instructions" : "offscreen"
-                }
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Por favor Introduce una fecha correcta
-                <br />
-              </p>
             </div>
             <label className="correo">
               <input type="checkbox" />
@@ -358,7 +365,6 @@ const Register = () => {
               style={{
                 display: "flex",
                 margin: "0 auto",
-                width: "30%",
                 marginBottom: "2rem",
               }}
             >
