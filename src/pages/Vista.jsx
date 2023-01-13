@@ -113,7 +113,9 @@ const Vista = (props) => {
             pokemon = {
               nombre: data.species.name,
               imagen: data2.sprites.front_default,
+              tipos: data2.types,
             };
+
             evoluciones.push(pokemon);
           }
 
@@ -200,9 +202,6 @@ const Vista = (props) => {
                         </p>
                       );
                     })}
-                    <p className="p1">Debilidad</p>
-                    <p className="typeElectric"></p>
-                    <p className="typeGround"></p>
                   </div>
                 </div>
                 <div className="info">
@@ -247,6 +246,18 @@ const Vista = (props) => {
                           </a>
                         </div>
                         <p>{evolution.nombre}</p>
+                        <div className="types">
+                          {state.pokemon.types.map((type, idx) => {
+                            return (
+                              <p
+                                className={type.type.name}
+                                style={{ marginBottom: "0.5rem" }}
+                              >
+                                {traduccionTipos[type.type.name]}
+                              </p>
+                            );
+                          })}
+                        </div>
                       </div>
                       {evolutions.length - 1 === i ? (
                         <p></p>
