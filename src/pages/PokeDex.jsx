@@ -63,9 +63,6 @@ const PokeDex = () => {
   }, []);
 
   useEffect(() => {
-    if (!buscando) {
-      fetchPokemons();
-    }
     //Obtenemos todos los pKMNS
     fetchPokemons();
   }, [page]);

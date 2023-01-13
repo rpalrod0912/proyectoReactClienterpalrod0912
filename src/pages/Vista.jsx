@@ -6,15 +6,15 @@ import { useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import flechaIzq from "../images/arrow-point-to-right.png";
 import { getPokemonData } from "../api";
+import flecha from "../images/Flecha.png";
 
 const Vista = (props) => {
   //Recibe las props routing
   const [carga, setCarga] = useState(true);
   const [filtrado, setFiltrado] = useState([]);
   const [data, setData] = useState([]);
-  const [evo, setEvolution] = useState([]);
-  const [evo1, setEvo1] = useState([]);
-  const [evo2, setEvo2] = useState([]);
+  const [evo, setEvolution] = useState(true);
+  const [evolutions, setEvolutions] = useState([]);
   const location = useLocation();
   const { state } = location;
 
@@ -50,11 +50,14 @@ const Vista = (props) => {
         //console.log(data);
         if (typeof data === "object" && typeof data !== "undefined") {
           //debugger;
-          setData(data);
           setCarga(false);
+
+          setData(data);
           //Para Obtener El id para obtener la llamada a la evolucion debemos modificar el string obtenido en Data
           let evoUrl = data.evolution_chain.url;
-          const evoId = evoUrl.charAt(evoUrl.length - 2);
+          const evoId = evoUrl.split("/").at(-2);
+          debugger;
+
           const evolution = getEvolutionChain(evoId);
 
           //console.log(evolution);
@@ -66,29 +69,64 @@ const Vista = (props) => {
             filteredFlavorTextEntries.length > 0
               ? filteredFlavorTextEntries[0]
               : {};
-          //console.log(filteredFlavorTextEntries);
-          //console.log(flavorTextEntry);
-          //debugger;
           const flavorText = flavorTextEntry.flavor_text;
           //console.log(flavorText);
           setFiltrado(flavorText);
+          console.log(evolutions);
         }
       };
       getDescription(state.pokemon.id);
     } catch (err) {}
+
     const getEvolutionChain = async (id) => {
       try {
-        //debugger;
         let url = `https://pokeapi.co/api/v2/evolution-chain/${id}/`;
         const response = await fetch(url);
-        const data = await response.json();
+        var data = await response.json();
         if (
           (typeof data === "object" && typeof data !== "undefined") ||
           data.length > 0
         ) {
+          //debugger;
+          let evoluciones = [];
+          //debugger;
+          data = data.chain;
+          const response2 = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${data.species.name}/`
+          );
+          const data2 = await response2.json();
+          //debugger;
+
+          let pokemon = {
+            nombre: data.species.name,
+            imagen: data2.sprites.front_default,
+          };
+          evoluciones.push(pokemon);
+          //debugger;
+          while (data.evolves_to.length > 0) {
+            //debugger;
+            data = data.evolves_to[0];
+            const response2 = await fetch(
+              `https://pokeapi.co/api/v2/pokemon/${data.species.name}/`
+            );
+            const data2 = await response2.json();
+            pokemon = {
+              nombre: data.species.name,
+              imagen: data2.sprites.front_default,
+            };
+            evoluciones.push(pokemon);
+          }
+
+          //console.log(evoluciones);
+          if (evoluciones.length > 1) {
+            setEvolution(false);
+            if (evolutions.length > 0) {
+              debugger;
+            } else {
+              setEvolutions(evoluciones);
+            }
+          }
           debugger;
-          setEvolution(data);
-          console.log(evo);
           //console.log(data.chain.evolves_to[0]);
           //console.log(evolution.chain.evolves_to[0].species.url);
           //setEvo1(getPokemonData(evolution.chain.evolves_to[0].species.url));
@@ -112,12 +150,12 @@ const Vista = (props) => {
 
   //const chain = evolution.chain;
   //console.log(chain);
-
+  console.log(evolutions);
   return (
     <main className="bdy">
       <section className="dexBdy">
         <div>
-          {carga ? (
+          {carga && evolutions.length === 0 ? (
             <ColorRing
               visible={true}
               height="400"
@@ -198,6 +236,29 @@ const Vista = (props) => {
                 </p>
               </article>
               <h2 className="evoTitle">Evoluciones</h2>
+              <article className="evo">
+                {evolutions.map((evolution, i, evolutions) => {
+                  return (
+                    <>
+                      <div className="filaEvo">
+                        <div className="circle">
+                          <a>
+                            <img src={evolution.imagen} />
+                          </a>
+                        </div>
+                        <p>{evolution.nombre}</p>
+                      </div>
+                      {evolutions - 1 === i ? (
+                        <a>
+                          <img className="flecha" src={flecha} />
+                        </a>
+                      ) : (
+                        <p>Hola</p>
+                      )}
+                    </>
+                  );
+                })}
+              </article>
             </>
           )}
         </div>

@@ -15,9 +15,11 @@ const { useState, useEffect } = React;
 const JohtoDex = () => {
   const [tipo, setTipo] = useState("");
   const [pkmns, setPkmns] = useState(151);
+  const [page, setPage] = useState(0);
   const [cantPkmns, setCantPkmns] = useState(10);
   const [total, setTotal] = useState(10);
   //  debugger;
+  debugger;
 
   return (
     <Resultados
@@ -29,6 +31,8 @@ const JohtoDex = () => {
       setCantPkmns={setCantPkmns}
       total={total}
       setTotal={setTotal}
+      page={page}
+      setPage={setPage}
     ></Resultados>
   );
 };

@@ -28,9 +28,10 @@ const Resultados = (props) => {
     setCantPkmns,
     total,
     setTotal,
+    page,
+    setPage,
   } = props;
   const [pokemons, setPokemons] = useState([]);
-  const [page, setPage] = useState(0);
   const [carga, setCarga] = useState(true);
   const [like, setLike] = useState([]);
   const [noExiste, setNoExiste] = useState(false);
@@ -50,6 +51,7 @@ const Resultados = (props) => {
       });
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
+
       setCarga(false);
       setTotal(total);
       setNoExiste(false);
@@ -113,7 +115,7 @@ const Resultados = (props) => {
     setCarga(false);
     setBuscando(false);
   };
-
+  debugger;
   console.log(like);
   return (
     <LikeProvider
@@ -131,6 +133,7 @@ const Resultados = (props) => {
             setPage={setPage}
             total={total}
             tipo={tipo}
+            pkmns={pkmns}
             setPkmns={setPkmns}
             cantPkmns={cantPkmns}
             setCantPkmns={setCantPkmns}
