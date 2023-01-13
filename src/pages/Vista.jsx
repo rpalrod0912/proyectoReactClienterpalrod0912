@@ -11,6 +11,7 @@ import flecha from "../images/Flecha.png";
 const Vista = (props) => {
   //Recibe las props routing
   const [carga, setCarga] = useState(true);
+
   const [filtrado, setFiltrado] = useState([]);
   const [data, setData] = useState([]);
   const [evo, setEvolution] = useState(true);
@@ -50,7 +51,6 @@ const Vista = (props) => {
         //console.log(data);
         if (typeof data === "object" && typeof data !== "undefined") {
           //debugger;
-          setCarga(false);
 
           setData(data);
           //Para Obtener El id para obtener la llamada a la evolucion debemos modificar el string obtenido en Data
@@ -94,9 +94,10 @@ const Vista = (props) => {
           const response2 = await fetch(
             `https://pokeapi.co/api/v2/pokemon/${data.species.name}/`
           );
+
           const data2 = await response2.json();
           //debugger;
-
+          console.log(data2);
           let pokemon = {
             nombre: data.species.name,
             imagen: data2.sprites.front_default,
