@@ -237,7 +237,7 @@ const Vista = (props) => {
               </article>
               <h2 className="evoTitle">Evoluciones</h2>
               <article className="evo">
-                {evolutions.map((evolution, i, evolutions) => {
+                {evolutions.map((evolution, i) => {
                   return (
                     <>
                       <div className="filaEvo">
@@ -248,12 +248,12 @@ const Vista = (props) => {
                         </div>
                         <p>{evolution.nombre}</p>
                       </div>
-                      {evolutions - 1 === i ? (
+                      {evolutions.length - 1 === i ? (
+                        <p></p>
+                      ) : (
                         <a>
                           <img className="flecha" src={flecha} />
                         </a>
-                      ) : (
-                        <p>Hola</p>
                       )}
                     </>
                   );
