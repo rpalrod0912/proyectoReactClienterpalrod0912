@@ -13,7 +13,7 @@ import Resultados from "../components/Resultados";
 const { useState, useEffect } = React;
 
 const JohtoDex = () => {
-  const [tipo, setTipo] = useState("");
+  const [tipo, setTipo] = useState("JOHTO");
   const [pkmns, setPkmns] = useState(151);
   const [page, setPage] = useState(0);
   const [cantPkmns, setCantPkmns] = useState(10);

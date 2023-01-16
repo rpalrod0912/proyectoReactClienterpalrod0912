@@ -29,6 +29,20 @@ export const getPokemonData = async (url) => {
   } catch (err) {}
 };
 
+export const getTypeFilteredPkmn = async (tipo) => {
+  try {
+    //debugger;
+    let url = `https://pokeapi.co/api/v2/type/${tipo}`;
+    const response = await fetch(url);
+    //debugger;
+    const data = await response.json();
+    console.log(data);
+    //debugger;
+    //console.log(data);
+    return data;
+  } catch (err) {}
+};
+
 export const getPokemons2 = async (url) => {
   try {
     let url = `https://pokeapi.co/api/v2/generation/2/`;

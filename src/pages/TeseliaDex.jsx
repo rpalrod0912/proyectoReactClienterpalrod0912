@@ -13,7 +13,7 @@ import Resultados from "../components/Resultados";
 const { useState, useEffect } = React;
 
 const SinnohDex = () => {
-  const [tipo, setTipo] = useState("");
+  const [tipo, setTipo] = useState("TESELIA");
   const [pkmns, setPkmns] = useState(493);
   const [page, setPage] = useState(0);
   const [cantPkmns, setCantPkmns] = useState(13);

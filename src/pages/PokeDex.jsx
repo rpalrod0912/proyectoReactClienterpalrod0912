@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import {
   getDescription,
   getPokemonData,
+  getTypeFilteredPkmn,
   getPokemons,
   searchPokemon,
 } from "../api";
@@ -27,12 +28,57 @@ const PokeDex = () => {
   const [noExiste, setNoExiste] = useState(false);
   const [buscando, setBuscando] = useState(false);
   const [tipo, setTipo] = useState("");
+  const [filtro, setFiltro] = useState(false);
+  const [valorFiltro, setValorFiltro] = useState("");
 
   const fetchPokemons = async () => {
     try {
       setCarga(true);
       setTipo("NACIONAL");
-      const data = await getPokemons(25, 25 * page);
+      if (filtro === true) {
+        debugger;
+        setTipo("PERSONALIZADA");
+        //Solo filtraremos los Pokemon de Primera Generacion
+        const data = await getTypeFilteredPkmn(valorFiltro);
+        debugger;
+        const arrPromesas = data.pokemon.map(async (pokemon) => {
+          return await getPokemonData(pokemon.pokemon.url);
+        });
+        const pokemon1 = console.log(data.pokemon[0].pokemon.url);
+        const results = await Promise.all(arrPromesas);
+        setPokemons(results);
+        setCarga(false);
+        setTotal(Math.ceil(data.count / 25));
+        setNoExiste(false);
+        console.log(results);
+        console.log(arrPromesas);
+        console.log(results);
+        console.log(data);
+      } else {
+        const data = await getPokemons(25, 25 * page);
+        //debugger;
+        debugger;
+        console.log(like);
+        console.log(data);
+        console.log(data.results);
+        const arrPromesas = data.results.map(async (pokemon) => {
+          return await getPokemonData(pokemon.url);
+        });
+        const results = await Promise.all(arrPromesas);
+        setPokemons(results);
+        setCarga(false);
+        setTotal(Math.ceil(data.count / 25));
+        setNoExiste(false);
+        console.log(results);
+      }
+    } catch (err) {}
+  };
+
+  const fetchPokemonsFiltrado = async () => {
+    try {
+      setCarga(true);
+      setTipo("NACIONAL");
+      const data = await getPokemons(151, 0);
       //debugger;
       debugger;
       console.log(like);
@@ -44,12 +90,11 @@ const PokeDex = () => {
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(data.count / 25));
+      setTotal(1);
       setNoExiste(false);
       console.log(results);
     } catch (err) {}
   };
-
   const cargaLikedPokemons = () => {
     //debugger;
     const pokemons =
@@ -61,6 +106,11 @@ const PokeDex = () => {
   useEffect(() => {
     cargaLikedPokemons();
   }, []);
+
+  useEffect(() => {
+    debugger;
+    fetchPokemons();
+  }, [filtro, valorFiltro]);
 
   useEffect(() => {
     //Obtenemos todos los pKMNS
@@ -114,16 +164,39 @@ const PokeDex = () => {
       {noExiste ? (
         <NoExiste></NoExiste>
       ) : (
-        <main>
-          <Pokedex
-            carga={carga}
-            pokemons={pokemons}
-            page={page}
-            setPage={setPage}
-            total={total}
-            tipo={tipo}
-          />
-        </main>
+        <>
+          {!filtro ? (
+            <main>
+              <Pokedex
+                carga={carga}
+                pokemons={pokemons}
+                page={page}
+                setPage={setPage}
+                total={total}
+                tipo={tipo}
+                filtro={filtro}
+                setFiltro={setFiltro}
+                valorFiltro={valorFiltro}
+                setValorFiltro={setValorFiltro}
+              />
+            </main>
+          ) : (
+            <main>
+              <Pokedex
+                carga={carga}
+                pokemons={pokemons}
+                page={page}
+                setPage={setPage}
+                total={total}
+                tipo={tipo}
+                filtro={filtro}
+                setFiltro={setFiltro}
+                valorFiltro={valorFiltro}
+                setValorFiltro={setValorFiltro}
+              />
+            </main>
+          )}
+        </>
       )}
     </LikeProvider>
   );

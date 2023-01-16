@@ -21,6 +21,10 @@ const Pokedex = (props) => {
     setPkmns,
     cantPkmns,
     setCantPkmns,
+    filtro,
+    setFiltro,
+    valorFiltro,
+    setValorFiltro,
   } = props;
   debugger;
   const lastPage = () => {
@@ -39,6 +43,14 @@ const Pokedex = (props) => {
     if (page !== total) {
       setPkmns(pkmns + cantPkmns);
     }
+  };
+
+  const handleOnClick = (e) => {
+    console.log(e.target.id);
+    setFiltro(true);
+    setValorFiltro(e.target.id);
+    console.log(filtro);
+    console.log(valorFiltro);
   };
   //console.log(props);
 
@@ -61,7 +73,27 @@ const Pokedex = (props) => {
         <div class="resultados">
           <div class="filtro">
             <p>Mostrar Filtros</p>
-            <img src="assets/images/Flecha.png" />
+            <button
+              className="fire"
+              id="fire"
+              onClick={(e) => handleOnClick(e)}
+            >
+              FUEGO
+            </button>
+            <button
+              className="grass"
+              id="grass"
+              onClick={(e) => handleOnClick(e)}
+            >
+              PLANTA
+            </button>
+            <button
+              className="water"
+              id="water"
+              onClick={(e) => handleOnClick(e)}
+            >
+              AGUA
+            </button>
           </div>
           {carga ? (
             <ColorRing
@@ -81,6 +113,7 @@ const Pokedex = (props) => {
             />
           ) : (
             <div class="cardsDex">
+              <></>
               {pokemons.map((pokemon, idx) => {
                 return (
                   <Pokemon pokemon={pokemon} key={pokemon.name} />
