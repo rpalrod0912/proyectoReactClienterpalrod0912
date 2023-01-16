@@ -60,7 +60,7 @@ const PokeDex = () => {
           console.log(data.pokemon_species[0].name);
 
           const arrPromesas = data.pokemon_species.map(async (pokemon) => {
-            return await getPokemonDataByName(pokemon.name);
+            return await getPokemonDataByName(pokemon.url.split("/").at(-2));
           });
           debugger;
           const results = await Promise.all(arrPromesas);

@@ -227,6 +227,30 @@ const Pokedex = (props) => {
                   onClick={(e) => handleOnClick(e)}
                 />{" "}
                 Johto
+                <input
+                  type="radio"
+                  id="3"
+                  className="radioInput"
+                  name="generation"
+                  onClick={(e) => handleOnClick(e)}
+                />{" "}
+                Hoenn
+                <input
+                  type="radio"
+                  id="4"
+                  className="radioInput"
+                  name="generation"
+                  onClick={(e) => handleOnClick(e)}
+                />{" "}
+                Sinnoh
+                <input
+                  type="radio"
+                  id="5"
+                  className="radioInput"
+                  name="generation"
+                  onClick={(e) => handleOnClick(e)}
+                />{" "}
+                Teselia
               </div>
               <input type="reset" onClick={handleReset} />
             </div>
