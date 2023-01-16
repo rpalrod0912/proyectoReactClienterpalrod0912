@@ -1,5 +1,7 @@
 //Modifica a vistaPkm.html
 .grass {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(17, 169, 22);
   border: 3px solid rgb(17, 169, 22);
@@ -10,6 +12,8 @@
   width: auto;
 }
 .poison {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(137, 28, 135);
   border: 3px solid rgb(137, 28, 135);
@@ -20,6 +24,8 @@
   width: auto;
 }
 .water {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(13, 133, 219);
   border: 3px solid rgb(13, 133, 219);
@@ -30,6 +36,8 @@
   width: auto;
 }
 .flying {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(104, 166, 203);
   border: 3px solid rgb(104, 166, 203);
@@ -40,6 +48,8 @@
   width: auto;
 }
 .dragon {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(19, 34, 108);
   border: 3px solid rgb(19, 34, 108);
@@ -50,6 +60,8 @@
   width: auto;
 }
 .ice {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(48, 142, 173);
   border: 3px solid rgb(48, 142, 173);
@@ -60,6 +72,8 @@
   width: auto;
 }
 .dark {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(55, 56, 57);
   border: 3px solid rgb(55, 56, 57);
@@ -70,6 +84,8 @@
 }
 
 .fighting {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(111, 47, 24);
   border: 3px solid rgb(111, 47, 24);
@@ -79,6 +95,8 @@
   font-size: 2vw;
 }
 .ghost {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(74, 52, 134);
   border: 3px solid rgb(74, 52, 134);
@@ -88,6 +106,8 @@
   font-size: 2vw;
 }
 .psychic {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(161, 25, 199);
   border: 3px solid rgb(161, 25, 199);
@@ -97,6 +117,8 @@
   font-size: 2vw;
 }
 .steel {
+  margin: 1rem;
+
   color: black;
   background-color: rgba(202, 202, 202, 0.717);
   border: 3px solid rgba(202, 202, 202, 0.717);
@@ -106,6 +128,8 @@
   font-size: 2vw;
 }
 .fairy {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(220, 140, 227);
   border: 3px solid rgb(220, 140, 227);
@@ -115,6 +139,8 @@
   font-size: 2vw;
 }
 .rock {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(82, 84, 85);
   border: 3px solid rgb(82, 84, 85);
@@ -124,6 +150,8 @@
   font-size: 2vw;
 }
 .normal {
+  margin: 1rem;
+
   color: black;
   background-color: rgb(157, 169, 173);
   border: 3px solid rgb(157, 169, 173);
@@ -133,6 +161,8 @@
   font-size: 2vw;
 }
 .bug {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(75, 121, 62);
   border: 3px solid rgb(75, 121, 62);
@@ -142,6 +172,8 @@
   font-size: 2vw;
 }
 .ground {
+  margin: 1rem;
+
   color: white;
   background-color: rgb(120, 86, 5);
   border: 3px solid rgb(120, 86, 5);
@@ -152,7 +184,7 @@
 }
 .fire {
   color: white;
-
+  margin: 1rem;
   background-color: rgb(235, 50, 13);
   border: 3px solid rgb(235, 50, 13);
   border-radius: 30px;
@@ -162,6 +194,8 @@
   width: auto;
 }
 .electric {
+  margin: 1rem;
+
   color: black;
   /* width: 50%; */
   /* max-width: 60%; */
@@ -327,6 +361,9 @@
     }
   }
   @media (max-width: 700px) {
+    button {
+      padding: 0.4rem;
+    }
     .stats {
       p {
         min-width: auto;

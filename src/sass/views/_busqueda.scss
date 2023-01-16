@@ -40,6 +40,12 @@
         transform: rotate(-90deg);
       }
       background-color: var(--color__filtrosDex);
+      .tipos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
     }
     //Estilos de cada card, pues la vista de los pokemon se ven como una card individual que se ajustaran a la pantalla con el wrap
     //Resto del contenedor resultados

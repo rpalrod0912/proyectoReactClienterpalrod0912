@@ -28,11 +28,34 @@ export const getPokemonData = async (url) => {
     return data;
   } catch (err) {}
 };
+export const getPokemonDataByName = async (name) => {
+  try {
+    let url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+    //debugger;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (err) {}
+};
 
 export const getTypeFilteredPkmn = async (tipo) => {
   try {
     //debugger;
     let url = `https://pokeapi.co/api/v2/type/${tipo}`;
+    const response = await fetch(url);
+    //debugger;
+    const data = await response.json();
+    console.log(data);
+    //debugger;
+    //console.log(data);
+    return data;
+  } catch (err) {}
+};
+
+export const getRegionFilteredPkmn = async (numero) => {
+  try {
+    //debugger;
+    let url = `https://pokeapi.co/api/v2/generation/${numero}`;
     const response = await fetch(url);
     //debugger;
     const data = await response.json();

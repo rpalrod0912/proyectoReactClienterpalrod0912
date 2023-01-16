@@ -25,6 +25,8 @@ const Pokedex = (props) => {
     setFiltro,
     valorFiltro,
     setValorFiltro,
+    tipoFiltro,
+    setTipoFiltro,
   } = props;
   debugger;
   const lastPage = () => {
@@ -49,9 +51,13 @@ const Pokedex = (props) => {
     console.log(e.target.id);
     setFiltro(true);
     setValorFiltro(e.target.id);
+    console.log(e.target.type);
     console.log(filtro);
     console.log(valorFiltro);
+    setTipoFiltro(e.target.type);
   };
+
+  const handleReset = () => window.location.reload();
   //console.log(props);
 
   /*const lastPage = () => {
@@ -72,28 +78,158 @@ const Pokedex = (props) => {
         <div>Favoritos:{likedPokemons.length}</div>
         <div class="resultados">
           <div class="filtro">
-            <p>Mostrar Filtros</p>
-            <button
-              className="fire"
-              id="fire"
-              onClick={(e) => handleOnClick(e)}
-            >
-              FUEGO
-            </button>
-            <button
-              className="grass"
-              id="grass"
-              onClick={(e) => handleOnClick(e)}
-            >
-              PLANTA
-            </button>
-            <button
-              className="water"
-              id="water"
-              onClick={(e) => handleOnClick(e)}
-            >
-              AGUA
-            </button>
+            <div className="fitlrado">
+              <p>Filtros</p>
+            </div>
+            <div className="tipos" style={{ margin: "1rem" }}>
+              <button
+                className="fire"
+                id="fire"
+                onClick={(e) => handleOnClick(e)}
+              >
+                FUEGO
+              </button>
+              <button
+                className="grass"
+                id="grass"
+                onClick={(e) => handleOnClick(e)}
+              >
+                PLANTA
+              </button>
+              <button
+                className="water"
+                id="water"
+                onClick={(e) => handleOnClick(e)}
+              >
+                AGUA
+              </button>
+              <button
+                className="poison"
+                id="poison"
+                onClick={(e) => handleOnClick(e)}
+              >
+                VENENO
+              </button>
+              <button
+                className="psychic"
+                id="psychic"
+                onClick={(e) => handleOnClick(e)}
+              >
+                PSÍQUICO
+              </button>
+              <button
+                className="steel"
+                id="steel"
+                onClick={(e) => handleOnClick(e)}
+              >
+                ACERO
+              </button>
+              <button
+                className="ground"
+                id="ground"
+                onClick={(e) => handleOnClick(e)}
+              >
+                GROUND
+              </button>
+              <button
+                className="rock"
+                id="rock"
+                onClick={(e) => handleOnClick(e)}
+              >
+                ROCA
+              </button>
+              <button
+                className="electric"
+                id="electric"
+                onClick={(e) => handleOnClick(e)}
+              >
+                ELÉCTRICO
+              </button>
+              <button
+                className="flying"
+                id="flying"
+                onClick={(e) => handleOnClick(e)}
+              >
+                VOLADOR
+              </button>
+              <button
+                className="dragon"
+                id="dragon"
+                onClick={(e) => handleOnClick(e)}
+              >
+                DRAGÓN
+              </button>
+              <button
+                className="ice"
+                id="ice"
+                onClick={(e) => handleOnClick(e)}
+              >
+                HIELO
+              </button>
+              <button
+                className="dark"
+                id="dark"
+                onClick={(e) => handleOnClick(e)}
+              >
+                OSCURO
+              </button>
+              <button
+                className="fighting"
+                id="fighting"
+                onClick={(e) => handleOnClick(e)}
+              >
+                LUCHA
+              </button>
+              <button
+                className="ghost"
+                id="ghost"
+                onClick={(e) => handleOnClick(e)}
+              >
+                FANTASMA
+              </button>
+              <button
+                className="fairy"
+                id="fairy"
+                onClick={(e) => handleOnClick(e)}
+              >
+                HADA
+              </button>
+              <button
+                className="bug"
+                id="bug"
+                onClick={(e) => handleOnClick(e)}
+              >
+                BICHO
+              </button>
+              <button
+                className="normal"
+                id="normal"
+                onClick={(e) => handleOnClick(e)}
+              >
+                NORMAL
+              </button>
+            </div>
+            <div>
+              <div>
+                <input
+                  type="radio"
+                  id="1"
+                  className="radioInput"
+                  name="generation"
+                  onClick={(e) => handleOnClick(e)}
+                />{" "}
+                Kanto
+                <input
+                  type="radio"
+                  id="2"
+                  className="radioInput"
+                  name="generation"
+                  onClick={(e) => handleOnClick(e)}
+                />{" "}
+                Johto
+              </div>
+              <input type="reset" onClick={handleReset} />
+            </div>
           </div>
           {carga ? (
             <ColorRing

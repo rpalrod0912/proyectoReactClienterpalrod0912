@@ -6,6 +6,8 @@ import {
   getTypeFilteredPkmn,
   getPokemons,
   searchPokemon,
+  getRegionFilteredPkmn,
+  getPokemonDataByName,
 } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
@@ -30,37 +32,52 @@ const PokeDex = () => {
   const [tipo, setTipo] = useState("");
   const [filtro, setFiltro] = useState(false);
   const [valorFiltro, setValorFiltro] = useState("");
+  const [tipoFiltro, setTipoFiltro] = useState("");
 
   const fetchPokemons = async () => {
     try {
       setCarga(true);
       setTipo("NACIONAL");
+      console.log(tipoFiltro);
       if (filtro === true) {
         debugger;
         setTipo("PERSONALIZADA");
-        //Solo filtraremos los Pokemon de Primera Generacion
-        const data = await getTypeFilteredPkmn(valorFiltro);
-        debugger;
-        const arrPromesas = data.pokemon.map(async (pokemon) => {
-          return await getPokemonData(pokemon.pokemon.url);
-        });
-        const pokemon1 = console.log(data.pokemon[0].pokemon.url);
-        const results = await Promise.all(arrPromesas);
-        setPokemons(results);
-        setCarga(false);
-        setTotal(Math.ceil(data.count / 25));
-        setNoExiste(false);
-        console.log(results);
-        console.log(arrPromesas);
-        console.log(results);
-        console.log(data);
+        if (tipoFiltro === "submit") {
+          const data = await getTypeFilteredPkmn(valorFiltro);
+          debugger;
+          const arrPromesas = data.pokemon.map(async (pokemon) => {
+            return await getPokemonData(pokemon.pokemon.url);
+          });
+          const pokemon1 = console.log(data.pokemon[0].pokemon.url);
+          const results = await Promise.all(arrPromesas);
+          setPokemons(results);
+          setCarga(false);
+          setTotal(Math.ceil(data.pokemon.length / 25));
+          setNoExiste(false);
+        } else if (tipoFiltro === "radio") {
+          const data = await getRegionFilteredPkmn(valorFiltro);
+          debugger;
+          console.log(data.pokemon_species[0].name);
+
+          const arrPromesas = data.pokemon_species.map(async (pokemon) => {
+            return await getPokemonDataByName(pokemon.name);
+          });
+          debugger;
+          const results = await Promise.all(arrPromesas);
+          console.log(results);
+          setPokemons(results);
+          setCarga(false);
+          setTotal(Math.ceil(data.pokemon.length / 25));
+          setNoExiste(false);
+        }
       } else {
         const data = await getPokemons(25, 25 * page);
         //debugger;
         debugger;
+        /*
         console.log(like);
         console.log(data);
-        console.log(data.results);
+        console.log(data.results);*/
         const arrPromesas = data.results.map(async (pokemon) => {
           return await getPokemonData(pokemon.url);
         });
@@ -87,12 +104,13 @@ const PokeDex = () => {
       const arrPromesas = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
+      /*
       const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
       setTotal(1);
       setNoExiste(false);
-      console.log(results);
+      console.log(results);*/
     } catch (err) {}
   };
   const cargaLikedPokemons = () => {
@@ -110,7 +128,7 @@ const PokeDex = () => {
   useEffect(() => {
     debugger;
     fetchPokemons();
-  }, [filtro, valorFiltro]);
+  }, [filtro, valorFiltro, tipoFiltro]);
 
   useEffect(() => {
     //Obtenemos todos los pKMNS
@@ -178,6 +196,8 @@ const PokeDex = () => {
                 setFiltro={setFiltro}
                 valorFiltro={valorFiltro}
                 setValorFiltro={setValorFiltro}
+                tipoFiltro={tipoFiltro}
+                setTipoFiltro={setTipoFiltro}
               />
             </main>
           ) : (
@@ -193,6 +213,8 @@ const PokeDex = () => {
                 setFiltro={setFiltro}
                 valorFiltro={valorFiltro}
                 setValorFiltro={setValorFiltro}
+                tipoFiltro={tipoFiltro}
+                setTipoFiltro={setTipoFiltro}
               />
             </main>
           )}
