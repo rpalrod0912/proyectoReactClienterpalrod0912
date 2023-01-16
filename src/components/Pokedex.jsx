@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import LikeContext from "../contexts/likeContext";
 import Paginacion from "./Paginacion";
 import { ColorRing } from "react-loader-spinner";
 import Pokemon from "./Pokemon";
+import flecha from "../images/Flecha.png";
+import DatalistInput from "react-datalist-input";
+import "react-datalist-input/dist/styles.css";
 
 const { useContext } = React;
 
@@ -29,6 +32,7 @@ const Pokedex = (props) => {
     setTipoFiltro,
   } = props;
   debugger;
+  const [filterMenu, setFilterMenu] = useState(false);
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
     setPage(nextPage);
@@ -51,6 +55,7 @@ const Pokedex = (props) => {
     console.log(e.target.id);
     setFiltro(true);
     setValorFiltro(e.target.id);
+    debugger;
     console.log(e.target.type);
     console.log(filtro);
     console.log(valorFiltro);
@@ -74,186 +79,225 @@ const Pokedex = (props) => {
     <div>
       <section class="pkDex">
         <h1>POKÉDEX {tipo}</h1>
-
         <div>Favoritos:{likedPokemons.length}</div>
         <div class="resultados">
           <div class="filtro">
-            <div className="fitlrado">
+            <div className="filtrado">
               <p>Filtros</p>
-            </div>
-            <div className="tipos" style={{ margin: "1rem" }}>
               <button
-                className="fire"
-                id="fire"
-                onClick={(e) => handleOnClick(e)}
+                onClick={() => {
+                  if (filterMenu === true) {
+                    setFilterMenu(false);
+                  } else {
+                    setFilterMenu(true);
+                  }
+                }}
               >
-                FUEGO
-              </button>
-              <button
-                className="grass"
-                id="grass"
-                onClick={(e) => handleOnClick(e)}
-              >
-                PLANTA
-              </button>
-              <button
-                className="water"
-                id="water"
-                onClick={(e) => handleOnClick(e)}
-              >
-                AGUA
-              </button>
-              <button
-                className="poison"
-                id="poison"
-                onClick={(e) => handleOnClick(e)}
-              >
-                VENENO
-              </button>
-              <button
-                className="psychic"
-                id="psychic"
-                onClick={(e) => handleOnClick(e)}
-              >
-                PSÍQUICO
-              </button>
-              <button
-                className="steel"
-                id="steel"
-                onClick={(e) => handleOnClick(e)}
-              >
-                ACERO
-              </button>
-              <button
-                className="ground"
-                id="ground"
-                onClick={(e) => handleOnClick(e)}
-              >
-                GROUND
-              </button>
-              <button
-                className="rock"
-                id="rock"
-                onClick={(e) => handleOnClick(e)}
-              >
-                ROCA
-              </button>
-              <button
-                className="electric"
-                id="electric"
-                onClick={(e) => handleOnClick(e)}
-              >
-                ELÉCTRICO
-              </button>
-              <button
-                className="flying"
-                id="flying"
-                onClick={(e) => handleOnClick(e)}
-              >
-                VOLADOR
-              </button>
-              <button
-                className="dragon"
-                id="dragon"
-                onClick={(e) => handleOnClick(e)}
-              >
-                DRAGÓN
-              </button>
-              <button
-                className="ice"
-                id="ice"
-                onClick={(e) => handleOnClick(e)}
-              >
-                HIELO
-              </button>
-              <button
-                className="dark"
-                id="dark"
-                onClick={(e) => handleOnClick(e)}
-              >
-                OSCURO
-              </button>
-              <button
-                className="fighting"
-                id="fighting"
-                onClick={(e) => handleOnClick(e)}
-              >
-                LUCHA
-              </button>
-              <button
-                className="ghost"
-                id="ghost"
-                onClick={(e) => handleOnClick(e)}
-              >
-                FANTASMA
-              </button>
-              <button
-                className="fairy"
-                id="fairy"
-                onClick={(e) => handleOnClick(e)}
-              >
-                HADA
-              </button>
-              <button
-                className="bug"
-                id="bug"
-                onClick={(e) => handleOnClick(e)}
-              >
-                BICHO
-              </button>
-              <button
-                className="normal"
-                id="normal"
-                onClick={(e) => handleOnClick(e)}
-              >
-                NORMAL
+                <img src={flecha} />
               </button>
             </div>
-            <div>
-              <div>
-                <input
-                  type="radio"
-                  id="1"
-                  className="radioInput"
-                  name="generation"
-                  onClick={(e) => handleOnClick(e)}
-                />{" "}
-                Kanto
-                <input
-                  type="radio"
-                  id="2"
-                  className="radioInput"
-                  name="generation"
-                  onClick={(e) => handleOnClick(e)}
-                />{" "}
-                Johto
-                <input
-                  type="radio"
-                  id="3"
-                  className="radioInput"
-                  name="generation"
-                  onClick={(e) => handleOnClick(e)}
-                />{" "}
-                Hoenn
-                <input
-                  type="radio"
-                  id="4"
-                  className="radioInput"
-                  name="generation"
-                  onClick={(e) => handleOnClick(e)}
-                />{" "}
-                Sinnoh
-                <input
-                  type="radio"
-                  id="5"
-                  className="radioInput"
-                  name="generation"
-                  onClick={(e) => handleOnClick(e)}
-                />{" "}
-                Teselia
-              </div>
-              <input type="reset" onClick={handleReset} />
-            </div>
+            <>
+              {filterMenu ? (
+                <>
+                  <p>Filtrar por tipo</p>
+                  <div className="tipos" style={{ margin: "1rem" }}>
+                    <button
+                      className="fire"
+                      id="fire"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      FUEGO
+                    </button>
+                    <button
+                      className="grass"
+                      id="grass"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      PLANTA
+                    </button>
+                    <button
+                      className="water"
+                      id="water"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      AGUA
+                    </button>
+                    <button
+                      className="poison"
+                      id="poison"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      VENENO
+                    </button>
+                    <button
+                      className="psychic"
+                      id="psychic"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      PSÍQUICO
+                    </button>
+                    <button
+                      className="steel"
+                      id="steel"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      ACERO
+                    </button>
+                    <button
+                      className="ground"
+                      id="ground"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      GROUND
+                    </button>
+                    <button
+                      className="rock"
+                      id="rock"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      ROCA
+                    </button>
+                    <button
+                      className="electric"
+                      id="electric"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      ELÉCTRICO
+                    </button>
+                    <button
+                      className="flying"
+                      id="flying"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      VOLADOR
+                    </button>
+                    <button
+                      className="dragon"
+                      id="dragon"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      DRAGÓN
+                    </button>
+                    <button
+                      className="ice"
+                      id="ice"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      HIELO
+                    </button>
+                    <button
+                      className="dark"
+                      id="dark"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      OSCURO
+                    </button>
+                    <button
+                      className="fighting"
+                      id="fighting"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      LUCHA
+                    </button>
+                    <button
+                      className="ghost"
+                      id="ghost"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      FANTASMA
+                    </button>
+                    <button
+                      className="fairy"
+                      id="fairy"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      HADA
+                    </button>
+                    <button
+                      className="bug"
+                      id="bug"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      BICHO
+                    </button>
+                    <button
+                      className="normal"
+                      id="normal"
+                      onClick={(e) => handleOnClick(e)}
+                    >
+                      NORMAL
+                    </button>
+                  </div>
+                  <p>Filtrar por Generación</p>
+
+                  <div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="1"
+                        className="radioInput"
+                        name="generation"
+                        onClick={(e) => handleOnClick(e)}
+                      />{" "}
+                      Kanto
+                      <input
+                        type="radio"
+                        id="2"
+                        className="radioInput"
+                        name="generation"
+                        onClick={(e) => handleOnClick(e)}
+                      />{" "}
+                      Johto
+                      <input
+                        type="radio"
+                        id="3"
+                        className="radioInput"
+                        name="generation"
+                        onClick={(e) => handleOnClick(e)}
+                      />{" "}
+                      Hoenn
+                      <input
+                        type="radio"
+                        id="4"
+                        className="radioInput"
+                        name="generation"
+                        onClick={(e) => handleOnClick(e)}
+                      />{" "}
+                      Sinnoh
+                      <input
+                        type="radio"
+                        id="5"
+                        className="radioInput"
+                        name="generation"
+                        onClick={(e) => handleOnClick(e)}
+                      />{" "}
+                      Teselia
+                    </div>
+                    <div>
+                      <input list="formas" onChange={(e) => handleOnClick(e)} />
+
+                      <datalist id="formas">
+                        <option id="ball" value="Bola" />
+                        <option id="squiggle" value="Garabato" />
+                        <option id="tentacles" value="tentáculos" />
+                        <option id="fish" value="Pez" />
+                        <option id="arms" value="brazos" />
+                        <option id="legs" value="piernAS" />
+                        <option id="humanoid" value="humanoide" />
+                        <option id="armor" value="armadura" />
+                      </datalist>
+                    </div>
+                    <input
+                      type="reset"
+                      className="resetBtn"
+                      onClick={handleReset}
+                    />
+                  </div>
+                </>
+              ) : (
+                <p></p>
+              )}
+            </>
           </div>
           {carga ? (
             <ColorRing

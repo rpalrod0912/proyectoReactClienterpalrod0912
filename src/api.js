@@ -28,7 +28,17 @@ export const getPokemonData = async (url) => {
     return data;
   } catch (err) {}
 };
-export const getPokemonDataByName = async (name) => {
+export const getPokemonDataByName = async (forma) => {
+  try {
+    let url = `https://pokeapi.co/api/v2/pokemon-shape/${forma}`;
+    //debugger;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (err) {}
+};
+
+export const getPokemonDataByForm = async (name) => {
   try {
     let url = `https://pokeapi.co/api/v2/pokemon/${name}`;
     //debugger;

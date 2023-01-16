@@ -8,6 +8,7 @@ import {
   searchPokemon,
   getRegionFilteredPkmn,
   getPokemonDataByName,
+  getPokemonDataByForm,
 } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
@@ -69,6 +70,10 @@ const PokeDex = () => {
           setCarga(false);
           setTotal(Math.ceil(data.pokemon.length / 25));
           setNoExiste(false);
+        } else if (tipoFiltro === "text") {
+          debugger;
+          const data = await getPokemonDataByForm(valorFiltro);
+          console.log(data);
         }
       } else {
         const data = await getPokemons(25, 25 * page);
