@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import {
   faCheck,
@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
 import iconRegistro from "../images/IconoRegistro.png";
+import { useUserContext } from "../contexts/userContext";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -28,6 +29,8 @@ const Login = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [exito, setExito] = useState(false);
+
+  const localStorageId = "registered_users";
 
   useEffect(() => {
     userRef.current.focus();
@@ -54,6 +57,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     debugger;
     e.preventDefault();
+    const data = JSON.parse(window.localStorage.getItem(localStorageId));
     //Si se intenta habilitar el boton submit por maneras externas con los campos incorrectos
     //Lo volvemos a comprobar para prevenir que se introduzcan campos incorrectos
     const usuario = USER_REGEX.test(user);
@@ -63,36 +67,14 @@ const Login = () => {
       setErrMsg("Entrada Inválida");
       return;
     }
-    console.log(user, pwd);
-    setExito(true);
-    /*
-    try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
+    if (data.nombre === user && data.contraseña === pwd) {
       debugger;
-      fs.appendFile("account.json", user, pwd);
-      console.log(response.data);
-      console.log(response.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      //Reiniciamos campos
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("Sin respuesta del servidor..");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Nombre de Usuario ya existe");
-      } else {
-        setErrMsg("Registro Fallidos");
-      }
-      errRef.current.focus();
-    }*/
+      setUsuario(data);
+      setExito(true);
+    }
+    console.log(user, pwd);
   };
+
   return (
     <main>
       {exito ? (

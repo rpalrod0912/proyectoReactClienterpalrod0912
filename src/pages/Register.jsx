@@ -18,6 +18,8 @@ const DATE_REGEX =
 const REGISTER_URL = "/register";
 //const fs = global.require("fs");
 
+const localStorageId = "registered_users";
+
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -46,6 +48,8 @@ const Register = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [exito, setExito] = useState(false);
+
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     userRef.current.focus();
@@ -91,7 +95,16 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     debugger;
+    const userData = {
+      nombre: user,
+      contraseña: pwd,
+      mail: mail,
+    };
+    debugger;
+    setUsers(JSON.parse(window.localStorage.getItem(localStorageId)));
+    users.push(userData);
     e.preventDefault();
+    window.localStorage.setItem(localStorageId, JSON.stringify(users));
     //Si se intenta habilitar el boton submit por maneras externas con los campos incorrectos
     //Lo volvemos a comprobar para prevenir que se introduzcan campos incorrectos
     const usuario = USER_REGEX.test(user);

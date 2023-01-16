@@ -1,11 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import {
-  getDescription,
-  getPokemonData,
-  getPokemons,
-  searchPokemon,
-} from "../api";
+import { getPokemonData, getPokemons, searchPokemon } from "../api";
 import Pokedex from "../components/Pokedex";
 import Paginacion from "../components/Paginacion";
 import { LikeProvider } from "../contexts/likeContext";
@@ -18,7 +13,7 @@ const { useState, useEffect } = React;
 
 const localStorageId = "liked_pokemon";
 
-const Favoritos = () => {
+const HoennDex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState();
@@ -27,28 +22,31 @@ const Favoritos = () => {
   const [noExiste, setNoExiste] = useState(false);
   const [buscando, setBuscando] = useState(false);
   const [tipo, setTipo] = useState("");
-  const [vacio, setVacio] = useState(true);
-  debugger;
+  const [pkmns, setPkmns] = useState(251);
+  const [cantPkmns, setCantPkmns] = useState(15);
+
   const fetchPokemons = async () => {
     try {
-      setVacio(true);
+      debugger;
+      setTipo("HOENN");
+
       setCarga(true);
-      setTipo("FAVORITOS");
       debugger;
-      const data = JSON.parse(
-        window.localStorage.getItem(localStorageId) || []
-      );
-      debugger;
-      console.log(data);
-      if (data.length === 0) {
-        setVacio(false);
-      }
-      const results = await Promise.all(data);
+
+      const data = await getPokemons(cantPkmns, pkmns);
+
+      //console.log(data.results);
+      const arrPromesas = data.results.map(async (pokemon) => {
+        return await getPokemonData(pokemon.url);
+      });
+      const results = await Promise.all(arrPromesas);
       setPokemons(results);
       setCarga(false);
-      setTotal(Math.ceil(2));
+      setTotal(8);
       setNoExiste(false);
       console.log(results);
+      console.log(pkmns);
+      debugger;
     } catch (err) {}
   };
 
@@ -57,10 +55,10 @@ const Favoritos = () => {
     const pokemons =
       JSON.parse(window.localStorage.getItem(localStorageId)) || [];
     setLike(pokemons);
-    console.log(like);
   };
 
   useEffect(() => {
+    console.log("Pokemons fav.....");
     cargaLikedPokemons();
   }, []);
 
@@ -70,27 +68,24 @@ const Favoritos = () => {
     }
     //Obtenemos todos los pKMNS
     fetchPokemons();
-  }, []);
+  }, [page]);
 
-  const updateLikedPokemons = (pokemon) => {
+  const updateLikedPokemons = (name) => {
     //console.log(name);
     const actualizado = [...like];
-    //debugger;
-    const isLiked = like.map((o) => o.name).indexOf(pokemon.name);
+    const isLiked = like.indexOf(name);
     if (isLiked >= 0) {
       actualizado.splice(isLiked, 1);
     } else {
-      actualizado.push(pokemon);
+      actualizado.push(name);
     }
     setLike(actualizado);
-
     debugger;
     window.localStorage.setItem(localStorageId, JSON.stringify(actualizado));
-    fetchPokemons();
   };
 
   const onSearch = async (pokemon) => {
-    //debugger;
+    debugger;
     if (!pokemon) {
       return fetchPokemons();
     }
@@ -102,13 +97,11 @@ const Favoritos = () => {
       setCarga(false);
       return;
     } else {
-      setVacio(true);
       setNoExiste(false);
       setPokemons([result]);
       setPage(0);
       setTotal(1);
     }
-
     setCarga(false);
     setBuscando(false);
   };
@@ -122,30 +115,22 @@ const Favoritos = () => {
         <NoExiste></NoExiste>
       ) : (
         <main>
-          {!vacio ? (
-            <section className="register">
-              <h1>NO TIENES POKEMON FAVORITOS</h1>
-              <form>
-                <Link to="/PokeDex" style={{ textDecoration: "none" }}>
-                  <h1>¡Añade Favoritos Ahora! </h1>
-                  <button className="signUp">Acceder A la PÓKEDEX</button>
-                </Link>
-              </form>
-            </section>
-          ) : (
-            <Pokedex
-              tipo={tipo}
-              carga={carga}
-              pokemons={pokemons}
-              page={page}
-              setPage={setPage}
-              total={total}
-            />
-          )}
+          <Pokedex
+            carga={carga}
+            pokemons={pokemons}
+            page={page}
+            setPage={setPage}
+            total={total}
+            pkmns={pkmns}
+            tipo={tipo}
+            setPkmns={setPkmns}
+            cantPkmns={cantPkmns}
+            setCantPkmns={setCantPkmns}
+          />
         </main>
       )}
     </LikeProvider>
   );
 };
 
-export default Favoritos;
+export default HoennDex;

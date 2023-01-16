@@ -16,6 +16,7 @@ import Favoritos from "../pages/Favoritos";
 import HoennDex from "../pages/HoennDex";
 import SinnohDex from "../pages/SinnohDex";
 import TeseliaDex from "../pages/TeseliaDex";
+import LayoutPrivate from "../layouts/LayoutPrivate";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ export const router = createBrowserRouter([
         path: "/wiki",
         element: <Wiki />,
       },
+
       {
         path: "/profile",
         element: <Profile />,
@@ -68,10 +70,7 @@ export const router = createBrowserRouter([
         path: "/Pokemon",
         element: <Vista pokemon />,
       },
-      {
-        path: "/Favoritos",
-        element: <Favoritos />,
-      },
+
       {
         path: "/Hoenn",
         element: <HoennDex />,
@@ -83,6 +82,15 @@ export const router = createBrowserRouter([
       {
         path: "/Teselia",
         element: <TeseliaDex />,
+      },
+      {
+        path: "/Favoritos",
+        element: <Favoritos />,
+      },
+      {
+        path: "/Inicio",
+        element: <LayoutPrivate />,
+        children: [],
       },
     ],
   },

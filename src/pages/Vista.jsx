@@ -73,6 +73,7 @@ const Vista = (props) => {
           //console.log(flavorText);
           setFiltrado(flavorText);
           console.log(evolutions);
+          setCarga(false);
         }
       };
       getDescription(state.pokemon.id);
@@ -158,7 +159,7 @@ const Vista = (props) => {
     <main className="bdy">
       <section className="dexBdy">
         <div>
-          {carga && evolutions.length === 0 ? (
+          {carga ? (
             <ColorRing
               visible={true}
               height="400"
@@ -235,42 +236,50 @@ const Vista = (props) => {
                   <span className="pkData">Masculino/Femenino</span>
                 </p>
               </article>
-              <h2 className="evoTitle">Evoluciones</h2>
-              <article className="evo">
-                {evolutions.map((evolution, i) => {
-                  return (
-                    <>
-                      <div className="filaEvo">
-                        <div className="circle">
-                          <a>
-                            <img src={evolution.imagen} />
-                          </a>
-                        </div>
-                        <p>{evolution.nombre}</p>
-                        <div className="types">
-                          {state.pokemon.types.map((type, idx) => {
-                            return (
-                              <p
-                                className={type.type.name}
-                                style={{ marginBottom: "0.5rem" }}
-                              >
-                                {traduccionTipos[type.type.name]}
-                              </p>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      {evolutions.length - 1 === i ? (
-                        <p></p>
-                      ) : (
-                        <a>
-                          <img className="flecha" src={flecha} />
-                        </a>
-                      )}
-                    </>
-                  );
-                })}
-              </article>
+              <div>
+                {evolutions.length > 0 ? (
+                  <>
+                    <h2 className="evoTitle">Evoluciones</h2>
+                    <article className="evo">
+                      {evolutions.map((evolution, i) => {
+                        return (
+                          <>
+                            <div className="filaEvo">
+                              <div className="circle">
+                                <a>
+                                  <img src={evolution.imagen} />
+                                </a>
+                              </div>
+                              <p>{evolution.nombre}</p>
+                              <div className="types">
+                                {state.pokemon.types.map((type, idx) => {
+                                  return (
+                                    <p
+                                      className={type.type.name}
+                                      style={{ marginBottom: "0.5rem" }}
+                                    >
+                                      {traduccionTipos[type.type.name]}
+                                    </p>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                            {evolutions.length - 1 === i ? (
+                              <p></p>
+                            ) : (
+                              <a>
+                                <img className="flecha" src={flecha} />
+                              </a>
+                            )}
+                          </>
+                        );
+                      })}
+                    </article>
+                  </>
+                ) : (
+                  <h2 className="evoTitle">No tiene Evoluciones</h2>
+                )}
+              </div>
             </>
           )}
         </div>

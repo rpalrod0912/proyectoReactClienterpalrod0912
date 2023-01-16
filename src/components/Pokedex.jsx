@@ -27,14 +27,18 @@ const Pokedex = (props) => {
     const nextPage = Math.max(page - 1, 0);
     setPage(nextPage);
     debugger;
-    setPkmns(pkmns - cantPkmns);
+    if (page !== 0) {
+      setPkmns(pkmns - cantPkmns);
+    }
   };
 
   const nextPage = () => {
     const nextPage = Math.min(page + 1, total);
     setPage(nextPage);
     debugger;
-    setPkmns(pkmns + cantPkmns);
+    if (page !== total) {
+      setPkmns(pkmns + cantPkmns);
+    }
   };
   //console.log(props);
 
