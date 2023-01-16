@@ -28,6 +28,8 @@ const Favoritos = () => {
   const [buscando, setBuscando] = useState(false);
   const [tipo, setTipo] = useState("");
   const [vacio, setVacio] = useState(true);
+  const [sinPokemon, setSinPokemons] = useState(true);
+
   debugger;
   const fetchPokemons = async () => {
     try {
@@ -42,6 +44,7 @@ const Favoritos = () => {
       console.log(data);
       if (data.length === 0) {
         setVacio(false);
+        set;
       }
       const results = await Promise.all(data);
       setPokemons(results);
@@ -52,6 +55,12 @@ const Favoritos = () => {
     } catch (err) {}
   };
 
+  const comprobarLocalStorage = () => {
+    if (window.localStorage.getItem(localStorageId) === null) {
+      window.localStorage.setItem(localStorageId, JSON.stringify([]));
+    }
+  };
+
   const cargaLikedPokemons = () => {
     //debugger;
     const pokemons =
@@ -59,6 +68,10 @@ const Favoritos = () => {
     setLike(pokemons);
     console.log(like);
   };
+
+  useEffect(() => {
+    comprobarLocalStorage();
+  });
 
   useEffect(() => {
     cargaLikedPokemons();
@@ -117,7 +130,6 @@ const Favoritos = () => {
     <LikeProvider
       value={{ likedPokemons: like, updateLikedPokemons: updateLikedPokemons }}
     >
-      <BusquedaDex onSearch={onSearch} />
       {noExiste ? (
         <NoExiste></NoExiste>
       ) : (

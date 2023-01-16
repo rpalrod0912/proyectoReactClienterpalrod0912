@@ -56,7 +56,6 @@ const Vista = (props) => {
           //Para Obtener El id para obtener la llamada a la evolucion debemos modificar el string obtenido en Data
           let evoUrl = data.evolution_chain.url;
           const evoId = evoUrl.split("/").at(-2);
-          debugger;
 
           const evolution = getEvolutionChain(evoId);
 
@@ -142,19 +141,6 @@ const Vista = (props) => {
   //console.log(evolution.chain);
   //console.log(evolution.chain);
 
-  //console.log(state.pokemon);
-  //console.log(data);
-  //debugger;
-  //console.log(carga);
-  //debugger;
-  //console.log(filtrado);
-
-  //data.flavor_text_entries[50].flavor_text
-  //state.pokemon
-
-  //const chain = evolution.chain;
-  //console.log(chain);
-  console.log(evolutions);
   return (
     <main className="bdy">
       <section className="dexBdy">
