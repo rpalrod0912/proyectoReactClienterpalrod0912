@@ -56,7 +56,7 @@ const Login = () => {
     setErrMsg("");
   }, [user, pwd]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     debugger;
     e.preventDefault();
     const data = JSON.parse(window.localStorage.getItem(localStorageId));

@@ -93,7 +93,7 @@ const Register = () => {
     console.log(isChecked);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     debugger;
     const userData = {
       nombre: user,
@@ -116,33 +116,6 @@ const Register = () => {
     }
     console.log(user, pwd);
     setExito(true);
-
-    try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      debugger;
-      fs.appendFile("account.json", user, pwd);
-      console.log(response.data);
-      console.log(response.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      //Reiniciamos campos
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("Sin respuesta del servidor..");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Nombre de Usuario ya existe");
-      } else {
-        setErrMsg("Registro Fallidos");
-      }
-      errRef.current.focus();
-    }
   };
   return (
     <main>

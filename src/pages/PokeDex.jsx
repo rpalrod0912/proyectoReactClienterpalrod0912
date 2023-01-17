@@ -47,7 +47,7 @@ const PokeDex = () => {
           const data = await getTypeFilteredPkmn(valorFiltro);
           debugger;
           const arrPromesas = data.pokemon.map(async (pokemon) => {
-            return await getPokemonData(pokemon.pokemon.url);
+            return await getPokemonDataByName(pokemon.pokemon.name);
           });
           const pokemon1 = console.log(data.pokemon[0].pokemon.url);
           const results = await Promise.all(arrPromesas);

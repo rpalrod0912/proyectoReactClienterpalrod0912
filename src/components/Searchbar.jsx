@@ -20,6 +20,12 @@ const Searchbar = (props) => {
     setPokemon(data);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("Verga");
+    }
+  };
+
   return (
     <div className="search">
       <input
@@ -27,7 +33,6 @@ const Searchbar = (props) => {
         placeholder={search}
         className="searchBar"
         maxlength="40"
-        onChange={onChange}
       />
       <button className="buttonSearch" onClick={onClick}>
         <img className="logo-busq" src={busqueda} />
