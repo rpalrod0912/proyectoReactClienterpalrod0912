@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: "blogger_sansbold";
   src: url("src/sass/fonts/fontkitBloggerSans/blogger_sans-bold-webfont.woff2")
       format("woff2"),
@@ -15,17 +15,19 @@
       format("woff");
   font-weight: normal;
   font-style: normal;
-}
+}*/
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 * {
   margin: 0;
 }
+
 /*
+
 @font-face {
   font-family: "blogger_sansbold";
-  src: url("../fonts/fontkitBloggerSans/blogger_sans-bold-webfont.woff2")
+  src: url("/fonts/fontkitBloggerSans/blogger_sans-bold-webfont.woff2")
       format("woff2"),
-    url("../fonts/fontkitBloggerSans/blogger_sans-bold-webfont.woff")
+    url("/fonts/fontkitBloggerSans/blogger_sans-bold-webfont.woff")
       format("woff");
   font-weight: normal;
   font-style: normal;
