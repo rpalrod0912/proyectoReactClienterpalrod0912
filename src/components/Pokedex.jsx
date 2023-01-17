@@ -32,6 +32,7 @@ const Pokedex = (props) => {
     setTipoFiltro,
   } = props;
   debugger;
+  const [filterElementVal, setFilterElementVal] = useState("");
   const [filterMenu, setFilterMenu] = useState(false);
   const lastPage = () => {
     const nextPage = Math.max(page - 1, 0);
@@ -55,6 +56,7 @@ const Pokedex = (props) => {
     console.log(e.target.id);
     setFiltro(true);
     setValorFiltro(e.target.id);
+    setFilterElementVal(e.target.value);
     debugger;
     console.log(e.target.type);
     console.log(filtro);
@@ -107,6 +109,7 @@ const Pokedex = (props) => {
                     <button
                       className="fire"
                       id="fire"
+                      value="FUEGO"
                       onClick={(e) => handleOnClick(e)}
                     >
                       FUEGO
@@ -115,6 +118,7 @@ const Pokedex = (props) => {
                       className="grass"
                       id="grass"
                       onClick={(e) => handleOnClick(e)}
+                      value="PLANTA"
                     >
                       PLANTA
                     </button>
@@ -122,6 +126,7 @@ const Pokedex = (props) => {
                       className="water"
                       id="water"
                       onClick={(e) => handleOnClick(e)}
+                      value="AGUA"
                     >
                       AGUA
                     </button>
@@ -129,6 +134,7 @@ const Pokedex = (props) => {
                       className="poison"
                       id="poison"
                       onClick={(e) => handleOnClick(e)}
+                      value="VENENO"
                     >
                       VENENO
                     </button>
@@ -136,6 +142,7 @@ const Pokedex = (props) => {
                       className="psychic"
                       id="psychic"
                       onClick={(e) => handleOnClick(e)}
+                      value="PSÍQUICO"
                     >
                       PSÍQUICO
                     </button>
@@ -143,6 +150,7 @@ const Pokedex = (props) => {
                       className="steel"
                       id="steel"
                       onClick={(e) => handleOnClick(e)}
+                      value="ACERO"
                     >
                       ACERO
                     </button>
@@ -150,6 +158,7 @@ const Pokedex = (props) => {
                       className="ground"
                       id="ground"
                       onClick={(e) => handleOnClick(e)}
+                      value="TIERRA"
                     >
                       GROUND
                     </button>
@@ -157,6 +166,7 @@ const Pokedex = (props) => {
                       className="rock"
                       id="rock"
                       onClick={(e) => handleOnClick(e)}
+                      value="ROCA"
                     >
                       ROCA
                     </button>
@@ -164,6 +174,7 @@ const Pokedex = (props) => {
                       className="electric"
                       id="electric"
                       onClick={(e) => handleOnClick(e)}
+                      value="ELÉCTRICO"
                     >
                       ELÉCTRICO
                     </button>
@@ -171,6 +182,7 @@ const Pokedex = (props) => {
                       className="flying"
                       id="flying"
                       onClick={(e) => handleOnClick(e)}
+                      value="VOLADOR"
                     >
                       VOLADOR
                     </button>
@@ -178,6 +190,7 @@ const Pokedex = (props) => {
                       className="dragon"
                       id="dragon"
                       onClick={(e) => handleOnClick(e)}
+                      value="DRAGÓN"
                     >
                       DRAGÓN
                     </button>
@@ -185,6 +198,7 @@ const Pokedex = (props) => {
                       className="ice"
                       id="ice"
                       onClick={(e) => handleOnClick(e)}
+                      value="HIELO"
                     >
                       HIELO
                     </button>
@@ -192,6 +206,7 @@ const Pokedex = (props) => {
                       className="dark"
                       id="dark"
                       onClick={(e) => handleOnClick(e)}
+                      value="OSCURO"
                     >
                       OSCURO
                     </button>
@@ -199,6 +214,7 @@ const Pokedex = (props) => {
                       className="fighting"
                       id="fighting"
                       onClick={(e) => handleOnClick(e)}
+                      value="LUCHA"
                     >
                       LUCHA
                     </button>
@@ -206,6 +222,7 @@ const Pokedex = (props) => {
                       className="ghost"
                       id="ghost"
                       onClick={(e) => handleOnClick(e)}
+                      value="FANTASMA"
                     >
                       FANTASMA
                     </button>
@@ -213,6 +230,7 @@ const Pokedex = (props) => {
                       className="fairy"
                       id="fairy"
                       onClick={(e) => handleOnClick(e)}
+                      value="HADA"
                     >
                       HADA
                     </button>
@@ -220,6 +238,7 @@ const Pokedex = (props) => {
                       className="bug"
                       id="bug"
                       onClick={(e) => handleOnClick(e)}
+                      value="BICHO"
                     >
                       BICHO
                     </button>
@@ -227,6 +246,7 @@ const Pokedex = (props) => {
                       className="normal"
                       id="normal"
                       onClick={(e) => handleOnClick(e)}
+                      value="NORMAL"
                     >
                       NORMAL
                     </button>
@@ -289,6 +309,28 @@ const Pokedex = (props) => {
               )}
             </>
           </div>
+          <div>
+            <>
+              {filtro ? (
+                <>
+                  {tipoFiltro === "submit" ? (
+                    <>
+                      <button
+                        className={valorFiltro}
+                        style={{ display: "flex", margin: "1rem auto" }}
+                      >
+                        {filterElementVal}
+                      </button>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ) : (
+                <p></p>
+              )}
+            </>
+          </div>
           {carga ? (
             <ColorRing
               visible={true}
@@ -307,7 +349,6 @@ const Pokedex = (props) => {
             />
           ) : (
             <div class="cardsDex">
-              <></>
               {pokemons.map((pokemon, idx) => {
                 return (
                   <Pokemon pokemon={pokemon} key={pokemon.name} />
@@ -329,12 +370,18 @@ const Pokedex = (props) => {
             </div>
           )}
         </div>
-        <Paginacion
-          page={page}
-          totalPages={total}
-          onLeftClick={lastPage}
-          onRightClick={nextPage}
-        />
+        <>
+          {!filtro ? (
+            <Paginacion
+              page={page}
+              totalPages={total}
+              onLeftClick={lastPage}
+              onRightClick={nextPage}
+            />
+          ) : (
+            <></>
+          )}
+        </>
       </section>
     </div>
   );

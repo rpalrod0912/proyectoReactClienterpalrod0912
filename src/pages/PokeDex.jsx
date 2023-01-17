@@ -92,28 +92,6 @@ const PokeDex = () => {
     } catch (err) {}
   };
 
-  const fetchPokemonsFiltrado = async () => {
-    try {
-      setCarga(true);
-      setTipo("NACIONAL");
-      const data = await getPokemons(151, 0);
-      //debugger;
-      debugger;
-      console.log(like);
-      console.log(data);
-      console.log(data.results);
-      const arrPromesas = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.url);
-      });
-      /*
-      const results = await Promise.all(arrPromesas);
-      setPokemons(results);
-      setCarga(false);
-      setTotal(1);
-      setNoExiste(false);
-      console.log(results);*/
-    } catch (err) {}
-  };
   const cargaLikedPokemons = () => {
     //debugger;
     const pokemons =
