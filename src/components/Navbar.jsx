@@ -4,8 +4,11 @@ import menuIcon from "../images/menuIcon.png";
 import recortado from "../images/pokemonRecortado.png";
 import busqueda from "../images/Logo Busqueda.png";
 import Searchbar from "./Searchbar";
+import { useUserContext } from "../contexts/userContext";
 
 const Navbar = () => {
+  const { usuario, setUsuario } = useUserContext();
+
   return (
     <header>
       <NavLink to="/">
@@ -13,34 +16,45 @@ const Navbar = () => {
       </NavLink>
 
       <nav className="menuHTML">
-        <label for="menu-toggle">
-          <div className="botonMenu">
-            <img className="imgMenu" src={menuIcon} />
-          </div>
-        </label>
+        <>
+          {!usuario ? (
+            <NavLink to="/login">
+              <button>Login</button>
+            </NavLink>
+          ) : (
+            <>
+              <label for="menu-toggle">
+                <div className="botonMenu">
+                  <img className="imgMenu" src={menuIcon} />
+                </div>
+              </label>
+              <input type="checkbox" id="menu-toggle" />
 
-        <input type="checkbox" id="menu-toggle" />
+              <ul id="trickMenu">
+                <li>
+                  <button
+                    onClick={() => {
+                      setUsuario(false);
+                    }}
+                  >
+                    <p>Desconectar</p>
+                  </button>
+                </li>
 
-        <ul id="trickMenu">
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
+                <li>
+                  <NavLink to="/Inicio/PokeDex">Dex</NavLink>
+                </li>
 
-          <li>
-            <NavLink to="/PokeDex">Dex</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/profile">Mi Perfil</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Favoritos">Favoritos</NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/error">Error</NavLink>
-          </li>
-        </ul>
+                <li>
+                  <NavLink to="/Inicio/profile">Mi Perfil</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/Inicio/Favoritos">Favoritos</NavLink>
+                </li>
+              </ul>
+            </>
+          )}
+        </>
       </nav>
     </header>
   );

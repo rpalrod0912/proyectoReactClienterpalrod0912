@@ -43,10 +43,6 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
@@ -54,10 +50,7 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/PokeDex",
-        element: <PokeDex />,
-      },
+
       {
         path: "/Kanto",
         element: <KantoDex />,
@@ -83,14 +76,28 @@ export const router = createBrowserRouter([
         path: "/Teselia",
         element: <TeseliaDex />,
       },
-      {
-        path: "/Favoritos",
-        element: <Favoritos />,
-      },
+
       {
         path: "/Inicio",
         element: <LayoutPrivate />,
-        children: [],
+        children: [
+          {
+            path: "/Inicio/home",
+            element: <Home />,
+          },
+          {
+            path: "/Inicio/profile",
+            element: <Profile />,
+          },
+          {
+            path: "/Inicio/Favoritos",
+            element: <Favoritos />,
+          },
+          {
+            path: "/Inicio/PokeDex",
+            element: <PokeDex />,
+          },
+        ],
       },
     ],
   },

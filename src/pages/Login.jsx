@@ -19,6 +19,8 @@ const Login = () => {
   const userRef = useRef();
   const errREf = useRef();
 
+  const { usuario, setUsuario } = useUserContext();
+
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -67,10 +69,11 @@ const Login = () => {
       setErrMsg("Entrada Inválida");
       return;
     }
-    if (data.nombre === user && data.contraseña === pwd) {
+    if (data[0].nombre === user && data[0].contraseña === pwd) {
       debugger;
-      setUsuario(data);
+      setUsuario(true);
       setExito(true);
+      console.log(usuario);
     }
     console.log(user, pwd);
   };
@@ -80,7 +83,7 @@ const Login = () => {
       {exito ? (
         <section className="register">
           <h1> Bienvenido {user}, has Iniciado Sesión</h1>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/Inicio/Home" style={{ textDecoration: "none" }}>
             <button className="signUp">Ir A Inicio</button>
           </Link>
         </section>

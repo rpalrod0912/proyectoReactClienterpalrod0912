@@ -273,20 +273,7 @@ const Pokedex = (props) => {
                       />{" "}
                       Teselia
                     </div>
-                    <div>
-                      <input list="formas" onChange={(e) => handleOnClick(e)} />
 
-                      <datalist id="formas">
-                        <option id="ball" value="Bola" />
-                        <option id="squiggle" value="Garabato" />
-                        <option id="tentacles" value="tentáculos" />
-                        <option id="fish" value="Pez" />
-                        <option id="arms" value="brazos" />
-                        <option id="legs" value="piernAS" />
-                        <option id="humanoid" value="humanoide" />
-                        <option id="armor" value="armadura" />
-                      </datalist>
-                    </div>
                     <input
                       type="reset"
                       className="resetBtn"
