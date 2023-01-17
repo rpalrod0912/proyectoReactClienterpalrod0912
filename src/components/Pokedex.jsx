@@ -62,7 +62,10 @@ const Pokedex = (props) => {
     setTipoFiltro(e.target.type);
   };
 
-  const handleReset = () => window.location.reload();
+  const handleReset = () => {
+    setFiltro(false);
+    setTipoFiltro("");
+  };
   //console.log(props);
 
   /*const lastPage = () => {

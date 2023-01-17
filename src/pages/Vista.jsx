@@ -164,9 +164,7 @@ const Vista = (props) => {
           ) : (
             <>
               <div className="nav">
-                <img className="izq" src={flechaIzq} />
                 <p>Nº {state.pokemon.id}</p>
-                <img className="der" src={flechaIzq} />
               </div>
               <article className="pkmDex">
                 <div className="pkmPreset">

@@ -1,3 +1,5 @@
+@import "utilities/_fonts.scss";
+
 @import "themes/modes-themes";
 @import "layout/header";
 @import "layout/footer";
@@ -13,8 +15,6 @@
 @import "views/error";
 
 @import "themes/modes-themes";
-
-@import "utilities/_fonts.scss";
 
 .nav {
   display: flex;
