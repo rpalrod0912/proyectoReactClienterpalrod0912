@@ -11,13 +11,14 @@ import {
 
 import defaultImg from "../images/profileUser.png";
 //debugger;
-const localStorageId = "registered_users";
-const data = JSON.parse(window.localStorage.getItem(localStorageId));
+
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const MAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const Profile = () => {
+  const localStorageId = "registered_users";
+  const data = JSON.parse(window.localStorage.getItem(localStorageId));
   debugger;
   const [datosUsuario, setDatosUsuario] = useState(data);
 
